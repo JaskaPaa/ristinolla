@@ -1,0 +1,18 @@
+body {
+    background-color: rgb(253,245,235);
+    color: black;
+    /*background-color: #edebe9 linear-gradient(to bottom, hsl(37, 12%, 84%), hsl(37, 10%, 92%) 116px) no-repeat;*/
+}
+  
+.theme-colors {
+    color: black;
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+.square-colors {
+    background-color: rgb(163, 172, 162);
+    border: solid;
+    border-color: rgb(92, 92, 92);
+    stroke: black;
+}
+

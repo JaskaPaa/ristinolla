@@ -1,0 +1,38 @@
+body {
+    background-color: rgb(22, 21, 23);
+    color: lightgray;
+}
+
+.theme-colors {
+    color: lightgray;
+    background-color: rgba(200, 200, 200, 0.1);
+}
+
+
+.square-colors {
+    background-color: rgb(50, 50, 50);
+    border: solid;
+    border-color: gray;
+    stroke: white;
+}
+  
+:root {
+	--color-1: #a1a1a1;
+	--color-2: #131313;
+	--color-3: #e5e5e5;
+
+	--color-blue: #9999F7;
+	--color-gray: gray;
+	--color-black: black;
+	--color-white: white;
+
+	--color-border: #555555;
+	--color-hr: #555555;
+
+	--color-code-bg: #080808;
+	--color-code-fg: var(--color-1);
+
+	--color-blockquote-bg: #080808;
+	--color-blockquote-fg: var(--color-1);
+}
+
