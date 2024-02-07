@@ -2,7 +2,7 @@
 import { writable, derived } from 'svelte/store';
 import { browser } from '$app/environment';
 
-export const vw = writable(700);
+export const vw = writable(900);
 export const vh = writable(700);
 
 console.log('In store...');
