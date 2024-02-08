@@ -66,5 +66,18 @@ function stopDrag(e: MouseEvent): void {
     button:active{
         background: none;
         cursor: nwse-resize;
-    }    
+    }
+    
+    /*@media screen and (max-width: 60rem) {
+        button {
+            display: none;
+        }
+    }*/
+
+    /*@media (orientation: portrait) {
+        button {
+            display: none;
+        }
+    }*/
+
 </style>

@@ -18,8 +18,8 @@
 	
 	$: {
 		console.log(`Changed vw: ${$vw}`);
-		if ($vw < 800)
-			$board.size = $vw - 19;
+		//if ($vw < 800)
+		//	$board.size = $vw - 19;
 	} 
 
 	function viewportResize() {
@@ -119,7 +119,9 @@
 		<Game bind:this={gameRef} />
 		<!--h1>vw: {$vw} vh: {$vh}</h1-->
 	</div>
-	<div class="right" >		
+	<div class="right" >
+		<p>board.size: {$board.size}</p>
+		<p>vw: {$vw}</p>
 		<!--h1>Asetukset</h1>
 		<div>
 			<input type="color" id="head" name="head"
@@ -259,9 +261,9 @@
         100% { opacity: 0.5; }
     }
 
-	@media screen and (max-width: 1000px) {
+	/*@media screen and (max-width: 1000px) {
   		.middle, .right {
-    		width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+    		width: 100%; 
   		}
 
 		main :nth-child(1) { order: 2; }
@@ -272,12 +274,21 @@
 
 	@media screen and (max-width: 480px) {
   		.left, .middle, .right {
-    		width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+    		width: 100%; 
   		}
 		main :nth-child(1) { order: 2; }
     	main :nth-child(2) { order: 1; }
     	main :nth-child(3) { order: 3; }  
-	}
+	}*/
+
+	@media (orientation: portrait) {
+		.left, .middle, .right {
+    		width: 100%; 
+  		}
+		main :nth-child(1) { order: 2; }
+    	main :nth-child(2) { order: 1; }
+    	main :nth-child(3) { order: 3; }  
+    }
 
 	
 </style>

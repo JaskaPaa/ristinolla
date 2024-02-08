@@ -5,7 +5,7 @@
     import Resizebutton from './Resizebutton.svelte';
     import { fade } from 'svelte/transition';
     import { beforeUpdate, afterUpdate } from 'svelte';
-    import { gameBackground, gameLineColor, gameMarkColor, squares, winnerLine, winner, board, game, vw } from './stores.js';
+    import { gameBackground, gameLineColor, gameMarkColor, squares, winnerLine, winner, board, game, vw, vh } from './stores.js';
     
     let rows = $squares.length;
 
@@ -35,6 +35,10 @@
     $: console.log(`Changed square: ${squareSize} board.size: ${$board.size}`);
 
     $: console.log($game)
+
+    $: console.log('vw:', $vw)
+    $: console.log('vh:', $vh)
+    $: $board.size = $vw - 39
 
     let humanMark = 'X';
 
@@ -178,8 +182,6 @@
     <Resizebutton bind:resized={$board.size} top={rows*(squareSize)} left={rows*(squareSize)}  />
     {/if}   
 </div>
-<!--p> {resizedSize} </p-->
-
 
 <style>
 
@@ -201,7 +203,7 @@
         /*background-color: #222;*/
         /*resize: both;
 	    overflow: hidden;*/
-        margin-left: -10px;
+        margin-left: 0px;
     }
 
     @keyframes dash {
@@ -210,12 +212,12 @@
         }
     }
 
-    @media screen and (max-width: 50rem) {
+    /*@media screen and (max-width: 50rem) {
         svg {
             width:  640px;
             height: 640px;
         }
-    }
+    }*/
 
 
 </style>

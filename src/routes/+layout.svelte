@@ -111,7 +111,9 @@
     .burger {
       display: none;
       width: 6rem;
+      position: absolute;
       float: right;
+      right: 0;
     }
 
     .show {
