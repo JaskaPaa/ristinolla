@@ -30,7 +30,9 @@
 
     let testMove = {x: 0, y: 0};
 
-    $: squareSize = (Math.round($board.size/rows)%2 === 0) ? Math.round($board.size/rows) : Math.round($board.size/rows);
+    $: squareSize = Math.floor($board.size/rows)
+    
+    //(Math.round($board.size/rows)%2 === 0) ? Math.round($board.size/rows) : Math.round($board.size/rows);
     
     $: console.log(`Changed square: ${squareSize} board.size: ${$board.size}`);
 
@@ -38,7 +40,8 @@
 
     $: console.log('vw:', $vw)
     $: console.log('vh:', $vh)
-    $: $board.size = $vw - 1
+    $: $board.size = $vw
+    //$board.size = 374 - 1
 
     let humanMark = 'X';
 
@@ -148,13 +151,22 @@
     
     export function showLastMove() {        
         visible = true;        
-        setTimeout(()=> {visible = false}, 500);        
+        setTimeout(()=> {visible = false}, 500);
+        
+        let elem = document.getElementById('board');
+        let rect = elem.getBoundingClientRect();
+
+        console.log("Width:", rect.width, "px");
+        console.log("Height: " + rect.height + "px");
+        console.log("calc:", rows*(squareSize), " = ", rows, " * ", squareSize );
+        console.log("$board.size:", $board.size);
+        console.log("$board.size - rows*squareSize", $board.size - rows*squareSize);
     }
 
 	
 </script>
 
-<div class="wrapper square-colors" style="width:{rows*(squareSize) + 1}px; ">
+<div id="board" class="wrapper square-colors" style="width:{rows*(squareSize) + 1}px; ">
     {#if $winnerLine.length > 0 }
     <svg height={rows*(squareSize)} width={rows*(squareSize)}>
         <line x1={line[0]} y1={line[1]} x2={line[2]} y2={line[3]} 
