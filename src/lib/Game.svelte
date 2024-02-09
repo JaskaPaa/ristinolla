@@ -16,7 +16,7 @@
     let line = [0, 0, 0, 0];
     let squareSize = 20;
     let animate = false;
-    let width = 0;   
+    let width = 39;   
     
     let background = '#777';
 
@@ -32,7 +32,7 @@
     let testMove = {x: 0, y: 0};
 
     $: squareSize = Math.floor($board.size/rows)
-    $: width = ($board.size - rows*squareSize)/2
+    //$: width = ($board.size - rows*squareSize)/2
     
     //(Math.round($board.size/rows)%2 === 0) ? Math.round($board.size/rows) : Math.round($board.size/rows);
     
@@ -42,8 +42,13 @@
 
     $: console.log('vw:', $vw)
     $: console.log('vh:', $vh)
-    $: $board.size = $vw
-    //$board.size = 374 - 1
+    
+    $: if  ($vw < $vh) { // portrait orientation
+            $board.size = $vw;
+            width = 1;
+        } else {
+            width = 39;
+        }
 
     let humanMark = 'X';
 
@@ -163,12 +168,13 @@
         console.log("calc:", rows*(squareSize), " = ", rows, " * ", squareSize );
         console.log("$board.size:", $board.size);
         console.log("$board.size - rows*squareSize", $board.size - rows*squareSize);
+        console.log("width", width); 
     }
 
 	
 </script>
 
-<div id="board" class="wrapper square-colors" style="--width:{width}; width:{rows*(squareSize) + 1}px; ">
+<div id="board" class="wrapper square-colors" style="--width:{width}; width:{rows*squareSize + width}px; ">
     {#if $winnerLine.length > 0 }
     <svg height={rows*(squareSize)} width={rows*(squareSize)}>
         <line x1={line[0]} y1={line[1]} x2={line[2]} y2={line[3]} 
@@ -212,19 +218,33 @@
 
     .wrapper {
         position: relative;
-        border-width: 0px 1px 1px 0px;
+        border-width: 19px 20px 20px 19px;
         /*border-width: calc( (var(--width)-1) * 1px) 
         calc( var(--width) * 1px) calc( var(--width) * 1px) calc( (var(--width)-1) * 1px);*/
         /*background-color: #222;*/
         /*resize: both;
 	    overflow: hidden;*/
-        margin-left: 0px;
+        
     }
 
     @keyframes dash {
         to {
             stroke-dashoffset: 1000;
         }
+    }
+
+    @media (orientation: portrait) {
+		.wrapper {
+            position: relative;
+            border-width: 0px 1px 1px 0px;
+            /*border-width: calc( (var(--width)-1) * 1px) 
+            calc( var(--width) * 1px) calc( var(--width) * 1px) calc( (var(--width)-1) * 1px);*/
+            /*background-color: #222;*/
+            /*resize: both;
+            overflow: hidden;*/
+            margin-left: 0px;
+            margin: auto;
+    }
     }
 
     /*@media screen and (max-width: 50rem) {
