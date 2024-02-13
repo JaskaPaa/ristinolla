@@ -70,7 +70,7 @@
   </span>
   <span class="burger">
     <SkewedButton on:click={show} symbol={"blaa"}  bgColor={"#aabbcc"} skew={-20}
-      float="right">{@html (showMenu) ? '&times;' : '&#9776;' }</SkewedButton>
+      float="right">{@html (showMenu) ? '&#x2715;' : '&#9776;' }</SkewedButton>
   </span>
   <span class:show={showMenu} class="menu">
   <SkewedButton on:click={switchTheme} symbol={"blaa"}  bgColor={"#aabbcc"} skew={-skew} float="right"> <Sun /> </SkewedButton>
@@ -163,50 +163,7 @@
         }
         .burger {
           display: grid;
-        }
-
-	  }
-
-
-    .button-container {
-      display: flex;
-      /*align-items: center;*/
-      justify-content: space-between;
-      /*width: 240px;*/
+        } 
     }
 
-    .topnav {
-      overflow-x: visible;
-      /*overflow-y: clip;*/
-      background-color: none;
-      width: 80%;
-      margin: auto;
-      font-size: 200%;
-    }
-
-    .topnav a {
-      float: left;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
-
-    .topnav a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-
-    .topnav a.active {
-      background-color: #04AA6D;
-      color: white;
-    }
-
-
-    .topnav-right {
-      float: right; 
-    }
-
-
-  </style>
+</style>

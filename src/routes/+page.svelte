@@ -75,19 +75,20 @@
 			<br>
 			<p>{($winner === '') ? "Sinun vuorosi" : "Voittaja: " + $winner}</p>
 			<p class="container">Pelimerkkisi:
+			
 			{#if mark === 'X' }
-			<svg width="1.5rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="stroke: black;">	
+			<svg class="square-colors" width="1.7rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" >	
 				<line opacity="1.0" stroke-width="12%" x1="20%" y1="20%" x2="80%" y2="80%"></line>
 				<line opacity="1.0" stroke-width="12%" x1="80%" y1="20%" x2="20%" y2="80%"></line>			
 			</svg>
 			{:else}
-			<svg width="1.5rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="stroke: black;">
+			<svg class="square-colors" width="1.7rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" >
 				<circle fill="none" opacity="1.0" stroke-width="12%" cx="50%" cy="50%" r="30%">
 				</circle>			
 			</svg>	
 			{/if}
-			<button on:click={changeMark} 
-				disabled='{changeDisabled}'>Vaihda</button>
+			<br>
+			<button on:click={changeMark} disabled='{changeDisabled}'>Vaihda</button>
 			<!--button on:click={ () => mark = (mark === 'X') ? 'O' : 'X' } class="marks" >
 				<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="stroke: black;">	
 					<line opacity="1.0" stroke-width="10%" x1="5%" y1="5%" x2="45%" y2="45%"></line>
@@ -162,11 +163,7 @@
     	display: flex;
     	align-items: center;
   	}
-	.header {
-		border: 0px solid blue;
-		padding: 15px;
-		text-align: center;		
-	}	
+
 	main {
 		text-align: center;
 		padding: 0;
@@ -177,6 +174,7 @@
 		flex-wrap: wrap;
 		flex-direction: row;
 	}
+
 	h1 {
 		/*color: #222;*/
 		text-transform: uppercase;
@@ -282,7 +280,7 @@
 	}*/
 
 	@media (orientation: portrait) {
-		.left, .middle, .right {
+		.middle, .right {
     		width: 100%; 
   		}
 		main :nth-child(1) { order: 2; }

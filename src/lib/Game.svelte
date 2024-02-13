@@ -42,12 +42,16 @@
 
     $: console.log('vw:', $vw)
     $: console.log('vh:', $vh)
-    
+
+    let lastSize = $board.size;
+
     $: if  ($vw < $vh) { // portrait orientation
+            lastSize = $board.size;
             $board.size = $vw;
             width = 1;
         } else {
             width = 39;
+            //$board.size = lastSize;
         }
 
     let humanMark = 'X';
@@ -66,10 +70,12 @@
         console.log("winner:", $winner);
         console.log("ss:", humanMark);
         
-        if ($winner === humanMark)
-            $game.score.human++;
-        else 
-            $game.score.AI++;
+        if ($game.status !== 'over') {
+            if ($winner === humanMark)
+                $game.score.human++;
+            else 
+                $game.score.AI++;
+        }
         
         $game.status = 'over';
         $game.movesFirst = ($game.movesFirst === 'human') ? 'ai' : 'human';
@@ -160,7 +166,7 @@
         visible = true;        
         setTimeout(()=> {visible = false}, 500);
         
-        let elem = document.getElementById('board');
+        /*let elem = document.getElementById('board');
         let rect = elem.getBoundingClientRect();
 
         console.log("Width:", rect.width, "px");
@@ -168,7 +174,7 @@
         console.log("calc:", rows*(squareSize), " = ", rows, " * ", squareSize );
         console.log("$board.size:", $board.size);
         console.log("$board.size - rows*squareSize", $board.size - rows*squareSize);
-        console.log("width", width); 
+        console.log("width", width);*/ 
     }
 
 	
@@ -236,7 +242,7 @@
     @media (orientation: portrait) {
 		.wrapper {
             position: relative;
-            border-width: 0px 1px 1px 0px;
+            border-width: 10px 1px 10px 0px;
             /*border-width: calc( (var(--width)-1) * 1px) 
             calc( var(--width) * 1px) calc( var(--width) * 1px) calc( (var(--width)-1) * 1px);*/
             /*background-color: #222;*/
