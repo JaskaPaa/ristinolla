@@ -17,7 +17,6 @@ let testValue = 2;
 <animate attributeType="XML" attributeName="stroke" values="blue;green;blue"
             dur="0.5s" repeatCount="1"/>
 
-
 <button on:click={onClick} class="square square-colors" style="width:{size}px; height:{size}px;">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
     {#if text === 'X'}	

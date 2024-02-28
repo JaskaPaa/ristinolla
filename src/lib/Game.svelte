@@ -116,12 +116,13 @@
         //background = "#251";    
     }   
 
-    function playAI(inTurn) {
-        console.log("AI plays...");        
+    function playAI(inTurn) {        
 
         if ($winner !== '')
             return; // game over
-        let move = AI.playMove($squares.slice(), inTurn);
+        
+        let level = (Math.random() * 3 < 2) ? 0 : 0;
+        let move = AI.playMove($squares.slice(), inTurn, level);
 
         console.log("Move:", move);
 

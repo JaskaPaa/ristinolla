@@ -78,8 +78,8 @@
 			
 			{#if mark === 'X' }
 			<svg class="square-colors" width="1.7rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" >	
-				<line opacity="1.0" stroke-width="12%" x1="20%" y1="20%" x2="80%" y2="80%"></line>
-				<line opacity="1.0" stroke-width="12%" x1="80%" y1="20%" x2="20%" y2="80%"></line>			
+				<line opacity="0.6" stroke-width="12%" x1="20%" y1="20%" x2="80%" y2="80%"></line>
+				<line opacity="0.6" stroke-width="12%" x1="80%" y1="20%" x2="20%" y2="80%"></line>			
 			</svg>
 			{:else}
 			<svg class="square-colors" width="1.7rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" >
@@ -88,7 +88,7 @@
 			</svg>	
 			{/if}
 			<br>
-			<button on:click={changeMark} disabled='{changeDisabled}'>Vaihda</button>
+			<button class="button-7" on:click={changeMark} disabled='{changeDisabled}'>Vaihda</button>
 			<!--button on:click={ () => mark = (mark === 'X') ? 'O' : 'X' } class="marks" >
 				<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="stroke: black;">	
 					<line opacity="1.0" stroke-width="10%" x1="5%" y1="5%" x2="45%" y2="45%"></line>
@@ -107,13 +107,13 @@
 			
 			</p>			
 		</fieldset>
-		<button on:click={() => gameRef.newGame(boardSize, mark)} disabled='{($winner !== '') ? false : true}'>Uusi peli</button>
-		<button on:click={gameRef.showLastMove}>Viime siirto</button>
+		<button class="button-7" on:click={() => gameRef.newGame(boardSize, mark)} disabled='{($winner !== '') ? false : true}'>Uusi peli</button>
+		<button class="button-7" on:click={gameRef.showLastMove}>Viime siirto</button>
 		<br>
-		<button disabled='{changeDisabled}' on:click={ () => {boardSize = 10; gameRef.newGame(boardSize, mark)} }>10&times;10</button>
-		<button disabled='{changeDisabled}' on:click={ () => {boardSize = 15; gameRef.newGame(boardSize, mark)} }>15&times;15</button>
-		<button disabled='{changeDisabled}' on:click={ () => {boardSize = 20; gameRef.newGame(boardSize, mark)} }>20&times;20</button>
-		<button disabled='{changeDisabled}' on:click={ () => {boardSize = 25; gameRef.newGame(boardSize, mark)} }>25&times;25</button>	
+		<button class="button-7" disabled='{changeDisabled}' on:click={ () => {boardSize = 10; gameRef.newGame(boardSize, mark)} }>10&times;10</button>
+		<button class="button-7" disabled='{changeDisabled}' on:click={ () => {boardSize = 15; gameRef.newGame(boardSize, mark)} }>15&times;15</button>
+		<button class="button-7" disabled='{changeDisabled}' on:click={ () => {boardSize = 20; gameRef.newGame(boardSize, mark)} }>20&times;20</button>
+		<button class="button-7" disabled='{changeDisabled}' on:click={ () => {boardSize = 25; gameRef.newGame(boardSize, mark)} }>25&times;25</button>	
 	</div>
 
 	<div class="middle">		
@@ -123,6 +123,9 @@
 	<div class="right" >
 		<p>board.size: {$board.size}</p>
 		<p>vw: {$vw}</p>
+		<button class="button-8" role="button">Button 8</button>
+		<button class="button-7" role="button">Button 7</button>
+
 		<!--h1>Asetukset</h1>
 		<div>
 			<input type="color" id="head" name="head"

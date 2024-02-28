@@ -7,7 +7,7 @@
 
     import { onMount } from 'svelte';
 
-    import { gameBackground, gameLineColor, theme } from '$lib/stores.js';
+    import { gameBackground, gameLineColor, theme, vh, vw } from '$lib/stores.js';
 
     let squares = ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O'];
     let bgColor = "blue";
@@ -22,6 +22,8 @@
       gameLineColor.set("#55555588");
     }
 
+    
+
     function switchTheme() {
       $theme = ($theme === "dark") ? "light" : "dark";
       document.documentElement.classList.remove("dark-theme", "light-theme");
@@ -32,6 +34,12 @@
     let showMenu = false;
     let skew = 20; 
     let burger = '&#9776;';
+
+    $: if  ($vw < $vh) { // portrait orientation
+            skew = 0;  
+          } else {
+            skew = 20;
+          }
 
     function show() {
       showMenu = (showMenu === true) ? false : true;
@@ -69,7 +77,7 @@
 	{/each} 
   </span>
   <span class="burger">
-    <SkewedButton on:click={show} symbol={"blaa"}  bgColor={"#aabbcc"} skew={-20}
+    <SkewedButton on:click={show} symbol={"blaa"}  bgColor={"#aabbcc"} skew={skew}
       float="right">{@html (showMenu) ? '&#x2715;' : '&#9776;' }</SkewedButton>
   </span>
   <span class:show={showMenu} class="menu">

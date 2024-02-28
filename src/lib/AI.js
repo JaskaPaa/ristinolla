@@ -9,7 +9,7 @@ let inTurn = 'O';
     checkDraw: (squares) => checkDraw(squares)
 };*/
 
-export function playMove(squares, nextMove = 'O') {
+export function playMove(squares, nextMove = 'O', level = 0) {
 
     let moves = [];
     sq = squares.slice();
@@ -31,8 +31,8 @@ export function playMove(squares, nextMove = 'O') {
 
     if (moves.length === size*size)
         return {x: Math.round(size/2)-1, y:  Math.round(size/2)-1, mark: inTurn }; // AI plays the first move
-
-    return {x: moves[0].move[0], y:  moves[0].move[1], mark: inTurn};
+    
+    return {x: moves[level].move[0], y:  moves[level].move[1], mark: inTurn};
 }
 
 function squareValue2(x, y) {
@@ -162,8 +162,10 @@ export function checkFive (x, y, squares) {
       ys = y > (19 - x) ? y - (19 - x) : 0;
     }
     str = from_to(x + 5, y - 5, -1, +1, 11); //diagonal
-    if ((i = str.search(c + c + c + c + c)) !== -1) {
+    if ((i = str.search(c + c + c + c + c)) !== -1) {      
       winner_row = [xs - i, ys + i, xs - i - 4, ys + i + 4];
+      console.log("Bug in this diagonal, but only sometimes!");
+      console.log("winner_row:", winner_row);
     }
     
     return winnerLineAllSquares(winner_row);    
