@@ -12,12 +12,19 @@ body {
 .square-colors {
     background-color: rgb(50, 50, 50);
     border: thin solid;
-    border-color: gray;
+    border-color: rgb(90, 90, 90);
     stroke: white;
+}
+
+.square-colors2 {
+    background-color: rgb(50, 50, 50);
+    border: thin solid;
+    border-color: rgb(90, 90, 90);
+    stroke: rgb(0, 90, 0);
 }
   
 :root {
-	--color-1: #a1a1a1;
+	--color-1: rgb(5, 187, 5);
 	--color-2: #131313;
 	--color-3: #e5e5e5;
 

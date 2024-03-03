@@ -3,6 +3,7 @@
 	//import Square from '$lib/Square.svelte';
 	import { onMount } from "svelte";
 	import Game from '$lib/Game.svelte';
+	import Panel from '$lib/Panel.svelte';
 	import { gameBackground, gameLineColor, vw, vh, winner, game, board } from '$lib/stores.js';
 
 
@@ -60,6 +61,9 @@
 
 <main>
 	<div class="left theme-colors">
+		<Panel gameRef={gameRef} />
+	</div>
+	<!--div class="left theme-colors">
 		<fieldset>
 			<legend>Pelitilanne</legend>			
 			<table class="scores">
@@ -88,7 +92,7 @@
 			</svg>	
 			{/if}
 			<br>
-			<button class="button-7" on:click={changeMark} disabled='{changeDisabled}'>Vaihda</button>
+			<button class="button-7" on:click={changeMark} disabled='{changeDisabled}'>Vaihda</button-->
 			<!--button on:click={ () => mark = (mark === 'X') ? 'O' : 'X' } class="marks" >
 				<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="stroke: black;">	
 					<line opacity="1.0" stroke-width="10%" x1="5%" y1="5%" x2="45%" y2="45%"></line>
@@ -105,7 +109,7 @@
 				</svg>  
 			</button-->
 			
-			</p>			
+			<!--/p>			  
 		</fieldset>
 		<button class="button-7" on:click={() => gameRef.newGame(boardSize, mark)} disabled='{($winner !== '') ? false : true}'>Uusi peli</button>
 		<button class="button-7" on:click={gameRef.showLastMove}>Viime siirto</button>
@@ -114,18 +118,19 @@
 		<button class="button-7" disabled='{changeDisabled}' on:click={ () => {boardSize = 15; gameRef.newGame(boardSize, mark)} }>15&times;15</button>
 		<button class="button-7" disabled='{changeDisabled}' on:click={ () => {boardSize = 20; gameRef.newGame(boardSize, mark)} }>20&times;20</button>
 		<button class="button-7" disabled='{changeDisabled}' on:click={ () => {boardSize = 25; gameRef.newGame(boardSize, mark)} }>25&times;25</button>	
-	</div>
+	</div-->
 
 	<div class="middle">		
 		<Game bind:this={gameRef} />
 		<!--h1>vw: {$vw} vh: {$vh}</h1-->
 	</div>
+	<!--Panel class="left" gameRef={gameRef} /-->
 	<div class="right" >
 		<p>board.size: {$board.size}</p>
 		<p>vw: {$vw}</p>
 		<button class="button-8" role="button">Button 8</button>
 		<button class="button-7" role="button">Button 7</button>
-
+		
 		<!--h1>Asetukset</h1>
 		<div>
 			<input type="color" id="head" name="head"
@@ -187,9 +192,9 @@
 	.left {
 		/*background-color: #999;*/
 		/*background-color: var(--color-1);*/
-		padding: 20px;
-		/*float: left;
-		width: 30%;*/ /* The width is 20%, by default */
+		/*padding: 20px;*/
+		/*float: left;*/
+		width: 20%; 
 		box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
 		margin: 0 1em;
 		height: min-content;
@@ -283,8 +288,9 @@
 	}*/
 
 	@media (orientation: portrait) {
-		.middle, .right {
-    		width: 100%; 
+		.middle, .right, .left {
+    		width: 100%;
+			margin: 0;
   		}
 		main :nth-child(1) { order: 2; }
     	main :nth-child(2) { order: 1; }

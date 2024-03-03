@@ -16,6 +16,32 @@ body {
     stroke: black;
 }
 
+.square-colors2 {
+    background-color: rgb(163, 172, 162);
+    border: thin solid;
+    border-color: rgb(90, 90, 90, 0.2);
+    stroke: rgb(140, 140, 140, 0.5);
+}
+
+:root {
+	--color-1: rgb(1, 43, 1);
+	--color-2: #131313;
+	--color-3: #e5e5e5;
+
+	--color-blue: #9999F7;
+	--color-gray: gray;
+	--color-black: black;
+	--color-white: white;
+
+	--color-border: #555555;
+	--color-hr: #555555;
+
+	--color-code-bg: #080808;
+	--color-code-fg: var(--color-1);
+
+	--color-blockquote-bg: #080808;
+	--color-blockquote-fg: var(--color-1);
+}
 
 .button-7:disabled {
 	background-color: rgba(200, 200, 200, 0.5);

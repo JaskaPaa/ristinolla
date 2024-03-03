@@ -6,3 +6,4 @@ Game.svelte
 SkewedButton.svelte
 SkewedLink.svelte
 Square.svelte
+Panel.svelte
