@@ -31,12 +31,12 @@
         <p>{$game.score.human} - {$game.score.AI}</p>
     </div>
     <div class="status">
-        <p>{($winner === '') ? "Sinun vuorosi" : "Voittaja: " + $winner}</p>
+        <p>{($game.movesNext === 'human') ? "Sinun vuorosi" : "Koneen vuoro"}</p>
     </div>
     <button class:hidden={($game.status === 'over') ? false : true} class="button-7"
         on:click={() => gameRef.newGame(boardSize, mark)}><h2>Uusi peli</h2></button>
     <div class:hidden={($game.status === 'started' || $game.status === 'over') ? false : true}>
-        <p>&#x25C0; &#x25B6;</p>
+        <p><button class="button-7" on:click={gameRef.moveBack}>&#x25C0;</button> &#x25B6;</p>        
         <button class="button-7" on:click={gameRef.showLastMove}>Viime siirto</button>
     </div>
     <div class:hidden={($game.status === 'ready') ? false : true}>        

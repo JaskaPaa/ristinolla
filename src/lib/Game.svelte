@@ -16,7 +16,7 @@
     let line = [0, 0, 0, 0];
     let squareSize = 20;
     let animate = false;
-    let width = 39;   
+    let width = 39;    
     
     let background = '#777';
 
@@ -38,10 +38,10 @@
     
     $: console.log(`Changed square: ${squareSize} board.size: ${$board.size}`);
 
-    $: console.log($game)
+    $: console.log($game);
 
-    $: console.log('vw:', $vw)
-    $: console.log('vh:', $vh)
+    $: console.log('vw:', $vw);
+    $: console.log('vh:', $vh);
 
     let lastSize = $board.size;
 
@@ -78,26 +78,29 @@
         }
         
         $game.status = 'over';
-        $game.movesFirst = ($game.movesFirst === 'human') ? 'ai' : 'human';
+        $game.movesNext = ($game.movesNext === 'human') ? 'ai' : 'human';
 
         console.log("GAME OVER");
 
     }
 
-    //newGame(15, 'X');
-
     function markMove(x: number, y: number) {
         
-        console.log("Squares:", $squares);
+        //console.log("Squares:", $squares);
+        console.log("movesNesx:", $game.movesNext);    
 
         if ($winner !== '')
             return; // game over
         if ($squares[x][y] !== '-')
             return; // square played
+        if ($game.movesNext !== 'human')
+            return; // wrong turn
 
         $squares[x][y] = humanMark;
         $game.status = 'ready';
         lastMove = {x: x, y: y};
+        $game.moves.push(lastMove);
+
         $winnerLine = AI.checkFive(x, y, $squares);
         
         if ($winnerLine.length > 0) {
@@ -108,7 +111,7 @@
         console.log("Tasuri? " + AI.checkDraw($squares));
         if (AI.checkDraw($squares)) {
             $winner = "Tasapeli";
-            $game.movesFirst = ($game.movesFirst === 'human') ? 'ai' : 'human';
+            $game.movesNext = ($game.movesNext === 'human') ? 'ai' : 'human';
             return;
         }
         
@@ -129,8 +132,10 @@
         $squares[move.x][move.y] = move.mark;
         $game.status = 'started';
         lastMove = {x: move.x, y: move.y};
+        $game.moves.push(lastMove);
         $winnerLine = AI.checkFive(move.x, move.y, $squares);
         console.log("winnerLine: " + $winnerLine);
+        $game.movesNext = 'human';
 
         if ($winnerLine.length > 0) {
             animate = true;
@@ -140,7 +145,7 @@
         console.log("Tasuri? " + AI.checkDraw($squares));
         if (AI.checkDraw($squares)) {
             $winner = "Tasapeli";
-            $game.movesFirst = ($game.movesFirst === 'human') ? 'ai' : 'human';
+            $game.movesNext = ($game.movesNext === 'human') ? 'ai' : 'human';
         }   
     }
 
@@ -152,30 +157,38 @@
         $squares = Array(size).fill().map(()=> Array(size).fill("-"));
         $winnerLine = [];
         $winner = '';
-        $game.status = 'ready'        
+        $game.status = 'ready'
+        $game.moves = [];        
         //humanPlaysFirstMove = (humanPlaysFirstMove) ? false : true;
         console.log("rows:", $squares.length);
+        $game.movesNext === 'human';
 
-        if ($game.movesFirst === 'ai') {
+        if ($game.movesNext === 'ai') {
             let move = AI.playMove($squares.slice(), humanMark === 'O' ? 'X' : 'O');        
             $squares[move.x][move.y] = move.mark;
             lastMove = {x: move.x, y: move.y};
+            $game.moves.push(lastMove);
+            $game.movesNext = 'human';
         }
     }    
     
-    export function showLastMove() {        
+    export function showLastMove() {
+        lastMove =  $game.moves.at(-1);     
         visible = true;        
-        setTimeout(()=> {visible = false}, 500);
-        
-        /*let elem = document.getElementById('board');
-        let rect = elem.getBoundingClientRect();
+        setTimeout(()=> {visible = false}, 500);       
+    }
 
-        console.log("Width:", rect.width, "px");
-        console.log("Height: " + rect.height + "px");
-        console.log("calc:", rows*(squareSize), " = ", rows, " * ", squareSize );
-        console.log("$board.size:", $board.size);
-        console.log("$board.size - rows*squareSize", $board.size - rows*squareSize);
-        console.log("width", width);*/ 
+    export function moveBack() {
+        
+        let last =  $game.moves.pop();
+        console.log("taking a move back:", last);
+        console.log("moves:", $game.moves);
+
+        if (last) {
+            $squares[last.x][last.y] = '-';
+            $game.movesNext = ($game.movesNext === 'human') ? 'ai' : 'human';
+            lastMove = last;
+        }
     }
 
 	
