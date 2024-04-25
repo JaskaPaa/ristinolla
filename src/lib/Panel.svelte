@@ -6,7 +6,7 @@
 	import type Game from './Game.svelte';
     
     export let gameRef: Game;
-
+    //#E2DEDA  #D5D3D1
     let hidden = false;
     let boardSize = 15;
     let mark = 'X';
@@ -84,16 +84,15 @@
 </div>
 
 <style>
-    .foo {
-        /*width: 20%;*/
+    .foo {        
         height: min-content;
-        /*background-color: green;
-        padding-bottom: 1em;*/
+        background-color: transparent; 
+        /*padding-bottom: 1em;*/
         align-items: center;
     }
-    .bar {
+    /*.bar {
         width: 100%;
-    }
+    }*/
     
     .size {
         display: inline-flex;
