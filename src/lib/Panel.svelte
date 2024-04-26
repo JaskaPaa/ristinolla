@@ -10,10 +10,15 @@
     let hidden = false;
     let boardSize = 15;
     let mark = 'X';
+    let statusInfo = "";
     
     $: hidden = ($winner === '') ? true : false;
-    $: console.log("status:", $game.status);
+    
     $: if ($game.status === 'ready' && gameRef !== undefined) gameRef.newGame(boardSize, mark);
+    
+    $: statusInfo = ($game.movesNext === 'human') ? "Sinun vuorosi" : "Tietokoneen vuoro"
+    $: if ($winner === mark)  statusInfo = "Sinä voitit"
+    $: if ($winner !== mark && $winner !== '')  statusInfo = "Sinä hävisit"
 
     function changeBoardSize(size: number) {
         size = (boardSize + size < 10) ? 0 : size;
@@ -32,7 +37,7 @@
         <p>{$game.score.human} - {$game.score.AI}</p>
     </div>
     <div class="status">
-        <p>{($game.movesNext === 'human') ? "Sinun vuorosi" : "Koneen vuoro"}</p>
+        <p>{statusInfo}</p>
     </div>
     <button class:hidden={($game.status === 'over') ? false : true} class="button-7"
         on:click={() => gameRef.newGame(boardSize, mark)}><h2>Uusi peli</h2></button>
