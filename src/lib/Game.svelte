@@ -78,7 +78,7 @@
         }
         
         $game.status = 'over';
-        $game.movesNext = ($game.movesNext === 'human') ? 'ai' : 'human';
+        $game.starter = ($game.starter === 'human') ? 'ai' : 'human';
 
         console.log("GAME OVER");
 
@@ -110,8 +110,8 @@
         
         console.log("Tasuri? " + AI.checkDraw($squares));
         if (AI.checkDraw($squares)) {
-            $winner = "Tasapeli";
-            $game.movesNext = ($game.movesNext === 'human') ? 'ai' : 'human';
+            $winner = "Tasapeli";            
+            $game.starter = ($game.starter === 'human') ? 'ai' : 'human';
             return;
         }
         
@@ -145,7 +145,7 @@
         console.log("Tasuri? " + AI.checkDraw($squares));
         if (AI.checkDraw($squares)) {
             $winner = "Tasapeli";
-            $game.movesNext = ($game.movesNext === 'human') ? 'ai' : 'human';
+            $game.starter = ($game.starter === 'human') ? 'ai' : 'human';            
         }   
     }
 
@@ -161,7 +161,7 @@
         $game.moves = [];        
         //humanPlaysFirstMove = (humanPlaysFirstMove) ? false : true;
         console.log("rows:", $squares.length);
-        $game.movesNext = 'ai';
+        $game.movesNext = $game.starter;
 
         if ($game.movesNext === 'ai') {
             let move = AI.playMove($squares.slice(), humanMark === 'O' ? 'X' : 'O');        
