@@ -6,7 +6,7 @@
 	import type Game from './Game.svelte';
     
     export let gameRef: Game;
-    //#E2DEDA  #D5D3D1
+    
     let hidden = false;
     let boardSize = 15;
     let mark = 'X';

@@ -161,7 +161,7 @@
         $game.moves = [];        
         //humanPlaysFirstMove = (humanPlaysFirstMove) ? false : true;
         console.log("rows:", $squares.length);
-        $game.movesNext === 'human';
+        $game.movesNext = 'ai';
 
         if ($game.movesNext === 'ai') {
             let move = AI.playMove($squares.slice(), humanMark === 'O' ? 'X' : 'O');        
