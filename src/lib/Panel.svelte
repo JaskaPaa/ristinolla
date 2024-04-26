@@ -121,8 +121,6 @@
     .mark-button {
         width:  2.5rem;
         height: 2.5rem;
-        border-color: none;
-        background-color: none;
         border: 0;
     }
 
