@@ -34,10 +34,11 @@ export const board = writable({size: 720});
 
 export const game = writable({
     score: {human: 0, AI: 0},
-    movesFirst: 'human',
+    movesNext: 'human',
     status: 'ready',
     winnerLine: [],
-    winner: '--'
+    winner: '--',
+    moves: [{x:0, y:0}]
 });
 
 
