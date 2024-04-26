@@ -110,7 +110,8 @@
         
         console.log("Tasuri? " + AI.checkDraw($squares));
         if (AI.checkDraw($squares)) {
-            $winner = "Tasapeli";            
+            $winner = "Tasapeli";
+            $game.status = 'over';            
             $game.starter = ($game.starter === 'human') ? 'ai' : 'human';
             return;
         }
@@ -145,6 +146,7 @@
         console.log("Tasuri? " + AI.checkDraw($squares));
         if (AI.checkDraw($squares)) {
             $winner = "Tasapeli";
+            $game.status = 'over';
             $game.starter = ($game.starter === 'human') ? 'ai' : 'human';            
         }   
     }
