@@ -15,10 +15,11 @@
     $: console.log("status:", $game.status);
     $: if ($game.status === 'ready' && gameRef !== undefined) gameRef.newGame(boardSize, mark);
 
-    function changeMark() {
-		mark = (mark === 'X') ? 'O' : 'X';
-		if ($game.status === 'ready')
-			gameRef.newGame(boardSize, mark);
+    function changeBoardSize(size: number) {
+        size = (boardSize + size < 10) ? 0 : size;
+        size = (boardSize + size > 30) ? 0 : size;
+        
+        boardSize += size;		
 	}
 
 </script>
@@ -42,11 +43,11 @@
     <div class:hidden={($game.status === 'ready') ? false : true}>        
         <div class="size">
             <button class="button-7 theme-colors size-button"
-                on:click={() => { boardSize -= 5; gameRef.newGame(boardSize, mark)} } >&#xff0d;</button>
+                on:click={() => changeBoardSize(-5) } >&#xff0d;</button>
             <div class="theme-colors size-display button-7">{boardSize}&times;{boardSize}</div>
             <!--div class="theme-colors size-button" on:click={() => { boardSize += 5; gameRef.newGame(boardSize, mark)} } >+5</div-->
             <button class="button-7 theme-colors size-button" style="border-radius: 0% 50% 50% 0%;"
-                on:click={() => { boardSize += 5; gameRef.newGame(boardSize, mark)} } >&#xff0b;</button>
+                on:click={() => changeBoardSize(+5) } >&#xff0b;</button>
         </div>    
         <br>
         <!--p class="container">Pelimerkkisi:			
