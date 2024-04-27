@@ -43,15 +43,18 @@
     $: console.log('vw:', $vw);
     $: console.log('vh:', $vh);
 
-    let lastSize = $board.size;
+    let portrait = false;
 
     $: if  ($vw < $vh) { // portrait orientation
-            lastSize = $board.size;
+            portrait = true;
             $board.size = $vw;
             width = 1;
         } else {
             width = 39;
-            //$board.size = lastSize;
+            if (portrait) {
+                $board.size = $board.resizedSize;
+                portrait = false;
+            }            
         }
 
     let humanMark = 'X';
@@ -155,6 +158,7 @@
         console.log("creating a new game-----");
         
         humanMark = m;
+        $game.humanMark = m;
         //rows = size;
         $squares = Array(size).fill().map(()=> Array(size).fill("-"));
         $winnerLine = [];
