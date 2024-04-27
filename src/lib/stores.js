@@ -17,8 +17,6 @@ if (browser) {
 
 export const theme = writable(stored || 'light');
 
-console.log('In store: ' + stored);
-
 if (browser) {
     theme.subscribe( (value) => localStorage.theme = value )
 }
@@ -30,7 +28,7 @@ export const squares = writable(Array(15).fill().map(()=> Array(15).fill("-")));
 export const winnerLine = writable([]);
 export const winner = writable('');
 
-export const board = writable({size: 720});
+export const board = writable({size: 720, resizedSize: 720});
 
 export const game = writable({
     score: {human: 0, AI: 0},
@@ -39,7 +37,8 @@ export const game = writable({
     winnerLine: [],
     winner: '--',
     moves: [{x:0, y:0}],
-    starter: "human"
+    starter: "human",
+    humanMark: 'X' 
 });
 
 
