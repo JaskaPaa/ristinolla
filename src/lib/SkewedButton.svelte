@@ -1,7 +1,5 @@
 <script>
-    // Declaring props
-    export let symbol;
-    export let bgColor;
+    
 	export let skew = 0;
     export let textSkew = -skew;
     export let float = "left";
