@@ -2,28 +2,31 @@
 
 import { gameBackground, gameMarkColor, board } from './stores.js';
 
-export let size = $board.size;
+let size = $board.size;
 export let top = size;
 export let left = size;
 export let resized = size;
 
-let top2 = size;
-let left2 = size;
+let top2 = 0;
+let left2 = 0;
 
 let started = false;
 
 function startDrag() {    
     started = true;
     window.addEventListener('mousemove', handleMousemove);
-    window.addEventListener('mouseup', stopDrag);
+    window.addEventListener('mouseup', stopDrag);    
+    top2 = $board.size;
+    left2 = $board.size;
+
 }
 
 function handleMousemove(e: MouseEvent): void {
-    if (started) {
+    if (started) {        
         left2 += e.movementX;
         top2  += e.movementY;
         
-        resized = Math.min(top2, left2);       
+        resized = Math.min(top2, left2);        
     }
 }
 
@@ -31,6 +34,7 @@ function stopDrag(e: MouseEvent): void {
     console.log(`Mouse up: ${e.x}, ${e.y}`);
     console.log(`Event: ${e}`);
     started = false;
+    $board.resizedSize = resized;
     window.removeEventListener("mousemove", handleMousemove);
     window.removeEventListener('mouseup', stopDrag);
 }
