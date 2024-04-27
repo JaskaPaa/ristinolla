@@ -17,8 +17,9 @@
     $: if ($game.status === 'ready' && gameRef !== undefined) gameRef.newGame(boardSize, mark);
     
     $: statusInfo = ($game.movesNext === 'human') ? "Sinun vuorosi" : "Tietokoneen vuoro"
-    $: if ($winner === mark)  statusInfo = "Sinä voitit"
-    $: if ($winner !== mark && $winner !== '')  statusInfo = "Sinä hävisit"
+    $: if ($winner === 'X')  statusInfo = "Risti voitti"
+    $: if ($winner === 'O')  statusInfo = "Nolla voitti"
+    $: if ($winner == 'Tasapeli')  statusInfo = "Tasapeli"
 
     function changeBoardSize(size: number) {
         size = (boardSize + size < 10) ? 0 : size;
