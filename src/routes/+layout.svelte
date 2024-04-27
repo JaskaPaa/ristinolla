@@ -66,8 +66,7 @@
 
 <div class="foo">
 <nav>
-  
-  <SkewedLink on:click={ () => showMenu = false } symbol={"Pelaa"}  link="/" bgColor={"#aabbcc"} skew={skew} float="left"></SkewedLink>
+  <SkewedButton on:click={() => showMenu = false} skew={skew} float="left"><a class="theme-colors" href="/">Pelaa</a> </SkewedButton>
   <span class="menu2">
   {#each squares as square, j}
     <Square onClick={() => {}}
@@ -77,20 +76,17 @@
 	{/each} 
   </span>
   <span class="burger">
-    <SkewedButton on:click={show} symbol={"blaa"}  bgColor={"#aabbcc"} skew={skew}
+    <SkewedButton on:click={show} skew={skew}
       float="right">{@html (showMenu) ? '&#x2715;' : '&#9776;' }</SkewedButton>
   </span>
   <span class:show={showMenu} class="menu">
-  <SkewedButton on:click={switchTheme} symbol={"blaa"}  bgColor={"#aabbcc"} skew={-skew} float="right"> <Sun /> </SkewedButton>
-  <SkewedLink on:click={ () => showMenu = false } symbol={"Asetukset"}  link="/settings" bgColor={"#aabbcc"} skew={-skew} float="right"></SkewedLink>
-  <SkewedLink on:click={ () => showMenu = false } symbol={"Tietoja"}  link="/about" bgColor={"#aabbcc"} skew={-skew} float="right"></SkewedLink>
-  <SkewedLink on:click={ () => showMenu = false } symbol={"Säännöt"}  link="/rules" bgColor={"#aabbcc"} skew={-skew} float="right"></SkewedLink>
-  </span>
-  
+  <SkewedButton on:click={switchTheme} skew={-skew} float="right"> <Sun /> </SkewedButton>  
+  <SkewedButton on:click={() => showMenu = false} skew={-skew} float="right"><a class="theme-colors" href="/settings">Asetukset</a> </SkewedButton>
+  <SkewedButton on:click={() => showMenu = false} skew={-skew} float="right"><a class="theme-colors" href="/about">Tietoja</a> </SkewedButton>
+  <SkewedButton on:click={() => showMenu = false} skew={-skew} float="right"><a class="theme-colors" href="/rules">Säännöt</a> </SkewedButton>
+  </span>  
 </nav>
 </div>
-
-<!--svelte:body style='--bg:{bgColor};' style:background-color={bgColor} /-->
 
 <slot></slot>
 
@@ -115,7 +111,10 @@
       box-sizing: border-box;
       /*overflow: hidden;*/
     }
-
+    a {
+        text-decoration: none;
+        background-color: transparent;
+    }
     .burger {
       display: none;
       width: 6rem;
