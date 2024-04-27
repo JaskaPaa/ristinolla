@@ -125,11 +125,11 @@
 		<!--h1>vw: {$vw} vh: {$vh}</h1-->
 	</div>
 	<!--Panel class="left" gameRef={gameRef} /-->
-	<div class="right" >
-		<p>board.size: {$board.size}</p>
-		<p>vw: {$vw}</p>
-		<button class="button-8" role="button">Button 8</button>
-		<button class="button-7" role="button">Button 7</button>
+	<div class="right" >		
+		<p> {$game.starter === 'human' ? 'Ihmispelaaja' : 'Tietokone'} aloittaa
+			Ihmispelaaja: {$game.humanMark} - Tietokone: {$game.humanMark === 'X' ? 'O' : 'X'}</p>
+		<p>{$game.moves.length} siirtoa</p>
+		
 		
 		<!--h1>Asetukset</h1>
 		<div>
