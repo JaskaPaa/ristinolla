@@ -1,7 +1,6 @@
 <script>
   
     import SkewedButton from '$lib/SkewedButton.svelte';
-    import SkewedLink from '$lib/SkewedLink.svelte';
     import Square from '$lib/Square.svelte';
     import Sun from '$lib/Sun.svelte';
 
