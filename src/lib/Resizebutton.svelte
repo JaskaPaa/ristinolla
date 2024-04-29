@@ -58,9 +58,6 @@ function stopDrag(e: MouseEvent): void {
         position: absolute;
         border: none;
         background: none;
-        /*margin-top: -5px;
-        margin-left: -5px;*/
-        /*color: black;*/
         margin: 0;
         padding: 0;
         border-radius: 0;
@@ -71,17 +68,4 @@ function stopDrag(e: MouseEvent): void {
         background: none;
         cursor: nwse-resize;
     }
-    
-    /*@media screen and (max-width: 60rem) {
-        button {
-            display: none;
-        }
-    }*/
-
-    /*@media (orientation: portrait) {
-        button {
-            display: none;
-        }
-    }*/
-
 </style>

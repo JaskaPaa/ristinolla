@@ -30,7 +30,7 @@
 
 </script>
 
-<div class="theme-colors foo">
+<div class="theme-colors panel">
     <div class="theme-colors">
         <p>Pisteesi:</p>
     </div>
@@ -51,26 +51,10 @@
             <button class="button-7 theme-colors size-button"
                 on:click={() => changeBoardSize(-5) } >&#xff0d;</button>
             <div class="theme-colors size-display button-7">{boardSize}&times;{boardSize}</div>
-            <!--div class="theme-colors size-button" on:click={() => { boardSize += 5; gameRef.newGame(boardSize, mark)} } >+5</div-->
             <button class="button-7 theme-colors size-button" style="border-radius: 0% 50% 50% 0%;"
                 on:click={() => changeBoardSize(+5) } >&#xff0b;</button>
         </div>    
-        <br>
-        <!--p class="container">Pelimerkkisi:			
-			{#if mark === 'X' }
-			<svg class="square-colors" width="1.5rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" >	
-				<line opacity="0.8" stroke-width="12%" x1="20%" y1="20%" x2="80%" y2="80%"></line>
-				<line opacity="0.8" stroke-width="12%" x1="80%" y1="20%" x2="20%" y2="80%"></line>			
-			</svg>
-			{:else}
-			<svg class="square-colors" width="1.5rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" >
-				<circle fill="none" opacity="0.8" stroke-width="12%" cx="50%" cy="50%" r="30%">
-				</circle>			
-			</svg>	
-			{/if}
-			<br>
-            <button class="button-7" on:click={changeMark}>Vaihda</button> 
-        </p-->
+        <br>        
         <button class="mark-button" on:click={ () =>  mark = 'X' }>
             <svg class="square-colors2" class:mark-selected={(mark === 'X') ? true : false} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" >	
                 <line opacity="0.8" stroke-width="12%" x1="20%" y1="20%" x2="80%" y2="80%"></line>
@@ -91,15 +75,11 @@
 </div>
 
 <style>
-    .foo {        
+    .panel {        
         height: min-content;
         background-color: transparent; 
-        /*padding-bottom: 1em;*/
         align-items: center;
-    }
-    /*.bar {
-        width: 100%;
-    }*/
+    }   
     
     .size {
         display: inline-flex;
@@ -111,17 +91,13 @@
         font-size: 1.2rem;
     }
     
-    .size-button {
-        /*border: 1px solid black;
-        font-size: 1.5rem;*/
+    .size-button {        
         width: 1.5rem;
         border-radius: 50% 0% 0% 50%;        
     }
 
     .size-display {
-        /*border: thin solid rgba(255, 255, 255, .2);*/
         margin: -0.2rem;
-        /*background-color: rgba(24, 26, 66, 0.9);*/
     }
 
     .mark-button {
@@ -131,10 +107,6 @@
     }
 
     .mark-selected {
-        /*border: 1px solid black;
-        font-size: 1.5rem;*/
-        /*width:  2.5rem;
-        height: 2.5rem;*/
         stroke: rgb(5, 187, 5);
         border-color: rgb(2, 177, 2);
         stroke: rgb(1, 43, 1);
@@ -143,25 +115,17 @@
     }
 
     .score {
-        width: 100%;
-        /*background-color: black;*/
+        width: 100%;        
         font-size: 2rem;
-        /*color: white;*/
     }
 
     .status {
         width: 100%;
         background-color: gray;
         font-size: 1.5rem;
-        /*color: white;*/
     }
 
     .hidden {
 		display: none;
 	}
-
-    .container {
-    	display: inline-flex;
-    	align-items: center;
-  	}
 </style>
