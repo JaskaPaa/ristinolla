@@ -25,23 +25,9 @@
     let borderColor = '#abc'
     gameLineColor.subscribe(value => {borderColor = value});
 
-    //$board.size = rows * 2*parseFloat(getComputedStyle(document.documentElement).fontSize)
-
-    //$: console.log(`rem size: ${parseFloat(getComputedStyle(document.documentElement).fontSize)}`); 
-
     let testMove = {x: 0, y: 0};
 
-    $: squareSize = Math.floor($board.size/rows)
-    //$: width = ($board.size - rows*squareSize)/2
-    
-    //(Math.round($board.size/rows)%2 === 0) ? Math.round($board.size/rows) : Math.round($board.size/rows);
-    
-    $: console.log(`Changed square: ${squareSize} board.size: ${$board.size}`);
-
-    $: console.log($game);
-
-    $: console.log('vw:', $vw);
-    $: console.log('vh:', $vh);
+    $: squareSize = Math.floor($board.size/rows)    
 
     let portrait = false;
 
@@ -87,10 +73,8 @@
 
     }
 
-    function markMove(x: number, y: number) {
+    function markMove(x: number, y: number) {       
         
-        //console.log("Squares:", $squares);
-        console.log("movesNesx:", $game.movesNext);    
 
         if ($winner !== '')
             return; // game over
@@ -119,8 +103,7 @@
             return;
         }
         
-        playAI(humanMark === 'O' ? 'X' : 'O');
-        //background = "#251";    
+        playAI(humanMark === 'O' ? 'X' : 'O');        
     }   
 
     function playAI(inTurn) {        
@@ -146,7 +129,6 @@
             return;
         }
         
-        console.log("Tasuri? " + AI.checkDraw($squares));
         if (AI.checkDraw($squares)) {
             $winner = "Tasapeli";
             $game.status = 'over';
@@ -159,14 +141,11 @@
         
         humanMark = m;
         $game.humanMark = m;
-        //rows = size;
         $squares = Array(size).fill().map(()=> Array(size).fill("-"));
         $winnerLine = [];
         $winner = '';
         $game.status = 'ready'
-        $game.moves = [];        
-        //humanPlaysFirstMove = (humanPlaysFirstMove) ? false : true;
-        console.log("rows:", $squares.length);
+        $game.moves = [];       
         $game.movesNext = $game.starter;
 
         if ($game.movesNext === 'ai') {
@@ -244,13 +223,7 @@
 
     .wrapper {
         position: relative;
-        border-width: 19px 20px 20px 19px;
-        /*border-width: calc( (var(--width)-1) * 1px) 
-        calc( var(--width) * 1px) calc( var(--width) * 1px) calc( (var(--width)-1) * 1px);*/
-        /*background-color: #222;*/
-        /*resize: both;
-	    overflow: hidden;*/
-        
+        border-width: 19px 20px 20px 19px;       
     }
 
     @keyframes dash {
@@ -262,24 +235,11 @@
     @media (orientation: portrait) {
 		.wrapper {
             position: relative;
-            border-width: 10px 1px 10px 0px;
-            /*border-width: calc( (var(--width)-1) * 1px) 
-            calc( var(--width) * 1px) calc( var(--width) * 1px) calc( (var(--width)-1) * 1px);*/
-            /*background-color: #222;*/
-            /*resize: both;
-            overflow: hidden;*/
+            border-width: 10px 1px 10px 0px;            
             margin-left: 0px;
             margin: auto;
-    }
-    }
-
-    /*@media screen and (max-width: 50rem) {
-        svg {
-            width:  640px;
-            height: 640px;
         }
-    }*/
-
-
+    }
+    
 </style>
 	
