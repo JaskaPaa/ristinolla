@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     
 	export let skew = 0;
     export let textSkew = -skew;
@@ -30,9 +30,5 @@
         cursor: pointer;
         transform: scale(0.975);
         box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
-    }
-
-    .unskew {
-        transform: skew(-30deg);
     }
 </style>
