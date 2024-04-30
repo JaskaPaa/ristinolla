@@ -6,7 +6,7 @@ body {
   
 .theme-colors {
     color: black;
-    background-color: rgba(200, 200, 200, 0.5);
+    background-color: rgba(220, 220, 220);
 }
 
 .square-colors {
@@ -36,7 +36,7 @@ body {
 	--color-border: #555555;
 	--color-hr: #555555;
 
-	--color-code-bg: #080808;
+	--color-code-bg: rgba(200, 200, 200, 0.5);
 	--color-code-fg: var(--color-1);
 
 	--color-blockquote-bg: #080808;
