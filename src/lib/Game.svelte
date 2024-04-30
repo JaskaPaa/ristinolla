@@ -6,6 +6,7 @@
     import { fade } from 'svelte/transition';
     import { beforeUpdate, afterUpdate } from 'svelte';
     import { gameBackground, gameLineColor, gameMarkColor, squares, winnerLine, winner, board, game, vw, vh } from './stores.js';
+    import { starterStyle } from './stores.js';
     
     let rows = $squares.length;
 
@@ -67,7 +68,11 @@
         }
         
         $game.status = 'over';
-        $game.starter = ($game.starter === 'human') ? 'ai' : 'human';
+
+        if ($starterStyle === "alternately")
+            $game.starter = ($game.starter === 'human') ? 'ai' : 'human';
+        else
+            $game.starter = $starterStyle; 
 
         console.log("GAME OVER");
 

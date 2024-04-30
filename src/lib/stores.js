@@ -30,6 +30,8 @@ export const winner = writable('');
 
 export const board = writable({size: 720, resizedSize: 720});
 
+export const starterStyle = writable("alternately");
+
 export const game = writable({
     score: {human: 0, AI: 0},
     movesNext: 'human',

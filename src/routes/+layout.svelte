@@ -2,10 +2,11 @@
 	import SkewedButton from '$lib/SkewedButton.svelte';
 	import Square from '$lib/Square.svelte';
 	import Sun from '$lib/Sun.svelte';
+  import Modal from '$lib/Modal.svelte';
 
 	import { onMount } from 'svelte';
 
-	import { gameBackground, gameLineColor, theme, vh, vw } from '$lib/stores.js';
+	import { gameBackground, gameLineColor, theme, vh, vw, starterStyle } from '$lib/stores.js';
 
 	let squares = ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O'];
 	let bgColor = 'blue';
@@ -30,6 +31,8 @@
 	let showMenu = false;
 	let skew = 20;
 	let burger = '&#9776;';
+  let showRules = false;
+  let showSettings = false;
 
 	$: if ($vw < $vh) {
       // portrait orientation
@@ -50,6 +53,14 @@
           bodyClassList.add(v + '-theme');
       });
 	});
+
+  let selected = "alternately";
+
+  $: console.log("style:", $starterStyle)
+	
+	function onChange(event) {
+		  $starterStyle = event.currentTarget.value;
+	}
 </script>
 
 <svelte:head>
@@ -79,18 +90,55 @@
         </span>
         <span class:show={showMenu} class="menu">
           <SkewedButton on:click={switchTheme} skew={-skew} float="right"><Sun /></SkewedButton>
-          <SkewedButton on:click={() => (showMenu = false)} skew={-skew} float="right">
-            <a class="theme-colors" href="/settings">Asetukset</a>
+          <SkewedButton on:click={() => {showMenu = false; showSettings = true } } skew={-skew} float="right">
+            <span>Asetukset</span>
           </SkewedButton>
-          <SkewedButton on:click={() => (showMenu = false)} skew={-skew} float="right">
+          <SkewedButton on:click={() => (showMenu = false) } skew={-skew} float="right">
             <a class="theme-colors" href="/about">Tietoja</a>
           </SkewedButton>
-          <SkewedButton on:click={() => (showMenu = false)} skew={-skew} float="right">
-            <a class="theme-colors" href="/rules">Säännöt</a>
+          <SkewedButton on:click={() => {showMenu = false; showRules = true } }  skew={-skew} float="right">
+            <span>Säännöt</span>
           </SkewedButton>
         </span>
     </nav>
 </div>
+
+<Modal bind:showModal={showRules}>
+	<h2 slot="header">
+		Säännöt	
+	</h2>
+  <p>
+    <br>
+    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman linjan viidestä peräkkäisestä
+    omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
+    <br><br>
+    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 merkin riviä, peli päättyy tasapeliin.    
+    <br><br>
+    Joissakin säännöissä voittolinjan on oltava täsmälleen viisi merkkiä pitkä, jolloin kuusi tai useampi merkki peräkkäin ei ole voitto,
+    mutta tässä versiossa siis viisi tai sitä enemmän voittaa.
+    <br><br>
+  </p>
+  	
+</Modal>
+
+<Modal bind:showModal={showSettings}>
+	<h2 slot="header">
+		Asetukset	
+	</h2>
+  <h4>Aloittaja:</h4>
+  <p>    
+    <label>
+      <input checked={selected==="alternately"} on:change={onChange} type="radio" name="amount" value="alternately" /> Vuorotellen
+    </label>
+    <label>
+      <input checked={selected==="human"} on:change={onChange} type="radio" name="amount" value="human" /> Aina pelaaja
+    </label>
+    <label>
+      <input checked={selected==="ai"} on:change={onChange} type="radio" name="amount" value="ai" /> Aina tietokone
+    </label>
+  </p>
+  	
+</Modal>
 
 <slot />
 
@@ -124,6 +172,7 @@
 	}
 
 	.show {
+    background-color: var(--color-code-bg);
 		display: grid;
 		position: absolute;
 		z-index: 1000;
