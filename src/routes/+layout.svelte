@@ -55,8 +55,6 @@
 	});
 
   let selected = "alternately";
-
-  $: console.log("style:", $starterStyle)
 	
 	function onChange(event) {
 		  $starterStyle = event.currentTarget.value;

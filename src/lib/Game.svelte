@@ -75,11 +75,16 @@
             $game.starter = $starterStyle; 
 
         console.log("GAME OVER");
+    }
 
+    $: {
+        console.log("style:", $starterStyle)
+        if ($starterStyle === "human" || $starterStyle === "ai") {
+            $game.starter = $starterStyle;
+        } 
     }
 
     function markMove(x: number, y: number) {       
-        
 
         if ($winner !== '')
             return; // game over
