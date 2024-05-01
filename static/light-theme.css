@@ -6,7 +6,7 @@ body {
   
 .theme-colors {
     color: black;
-    background-color: rgba(220, 220, 220);
+    background-color: rgb(193, 222, 202);
 }
 
 .square-colors {
@@ -38,6 +38,7 @@ body {
 
 	--color-code-bg: rgba(200, 200, 200, 0.5);
 	--color-code-fg: var(--color-1);
+  --color-bg-1:  rgb(163, 192, 172);
 
 	--color-blockquote-bg: #080808;
 	--color-blockquote-fg: var(--color-1);

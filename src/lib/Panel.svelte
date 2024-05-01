@@ -31,7 +31,7 @@
 </script>
 
 <div class="theme-colors panel">
-    <div class="theme-colors">
+    <div class="status">
         <p>Pisteesi:</p>
     </div>
     <div class="score">
@@ -69,7 +69,7 @@
         </button>
     </div>
     
-    <div class="theme-colors">
+    <div class="status">
         <br>
     </div>    
 </div>
@@ -121,7 +121,7 @@
 
     .status {
         width: 100%;
-        background-color: gray;
+        background-color: var(--color-bg-1);
         font-size: 1.5rem;
     }
 
