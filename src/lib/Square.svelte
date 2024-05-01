@@ -8,6 +8,7 @@ import { gameBackground, gameLineColor, gameMarkColor } from './stores.js';
 export let text = '';
 export let onClick: (x: number, y: number) => void;
 export let anim = false;
+export let showLast = false;
 export let size: number;
 
 let testValue = 2;
@@ -17,7 +18,7 @@ let testValue = 2;
 <animate attributeType="XML" attributeName="stroke" values="blue;green;blue"
             dur="0.5s" repeatCount="1"/>
 
-<button on:click={onClick} class="square square-colors" style="width:{size}px; height:{size}px;">
+<button on:click={onClick} class:showLast={showLast} class="square square-colors" style="width:{size}px; height:{size}px;">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
     {#if text === 'X'}	
         <line class:anim={anim} opacity="0.6" stroke-width="12%" x1="20%" y1="20%" x2="80%" y2="80%"></line>
@@ -55,6 +56,11 @@ let testValue = 2;
         animation: pulse 0.25s;
         animation-iteration-count: 2;
     }
+
+    .showLast {        
+        background: var(--color-bg-2);
+    }
+
 
     .square:focus {
         outline: none;

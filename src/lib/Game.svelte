@@ -6,7 +6,7 @@
     import { fade } from 'svelte/transition';
     import { beforeUpdate, afterUpdate } from 'svelte';
     import { gameBackground, gameLineColor, gameMarkColor, squares, winnerLine, winner, board, game, vw, vh } from './stores.js';
-    import { starterStyle } from './stores.js';
+    import { starterStyle, lastVisible } from './stores.js';
     
     let rows = $squares.length;
 
@@ -208,6 +208,7 @@
             <Square onClick={() => markMove(i, j)}
                 text={($squares[i][j] === '-') ? '' :  $squares[i][j]}
                 anim={(i == lastMove.x && j == lastMove.y && visible) ? true : false}
+                showLast={(i == lastMove.x && j == lastMove.y && $lastVisible) ? true : false}
                 size={squareSize}
                 />            		
 		{/each}
