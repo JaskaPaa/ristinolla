@@ -39,6 +39,7 @@ body {
 	--color-code-bg: rgba(200, 200, 200, 0.5);
 	--color-code-fg: var(--color-1);
   --color-bg-1:  rgb(163, 192, 172);
+  --color-bg-2:  rgb(163, 192, 172);
 
 	--color-blockquote-bg: #080808;
 	--color-blockquote-fg: var(--color-1);
