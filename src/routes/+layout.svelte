@@ -75,7 +75,7 @@
     {/if}
 </svelte:head>
 
-<div class="foo">
+<div class="navbar">
     <nav>
         <SkewedButton on:click={() => (showMenu = false)} {skew} float="left">
             <a class="theme-colors" href="/">Pelaa</a>
@@ -117,8 +117,7 @@
     Joissakin säännöissä voittolinjan on oltava täsmälleen viisi merkkiä pitkä, jolloin kuusi tai useampi merkki peräkkäin ei ole voitto,
     mutta tässä versiossa siis viisi tai sitä enemmän voittaa.
     <br><br>
-  </p>
-  	
+  </p>  	
 </Modal>
 
 <Modal bind:showModal={showSettings}>
@@ -137,10 +136,12 @@
       <input checked={selected==="ai"} on:change={onStarterChange} type="radio" name="amount" value="ai" /> Aina tietokone
     </label>
   </p>
+  <br>
+  <p> 
   <label>
     <input checked={$lastVisible===true} on:change={() => $lastVisible = $lastVisible ? false : true } type="checkbox" name="lastbox" /> Näytä viimeinen siirto
   </label>
-  	
+  <p>  	
 </Modal>
 
 <slot />
@@ -149,8 +150,7 @@
 	:global(body) {
 		margin: 0;
 	}
-
-	.foo {
+	.navbar {
 		width: 70%;
 		margin: auto;
 	}
@@ -162,6 +162,9 @@
 		font-size: 200%;
 		box-sizing: border-box;
 	}
+  p {
+    font-size: 120%;
+  }
 	a {
 		text-decoration: none;
 		background-color: transparent;
@@ -188,7 +191,7 @@
 		.menu2 {
 			display: none;
 		}
-		.foo {
+		.navbar {
 			width: 100%;
 		}
 	}
@@ -203,7 +206,7 @@
 	}
 
 	@media screen and (max-width: 50rem) {
-		.foo {
+		.navbar {
 			width: 100%;
 		}
 		.menu {
