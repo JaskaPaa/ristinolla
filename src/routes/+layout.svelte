@@ -1,4 +1,4 @@
-<script>
+<script lang='ts'>
 	import SkewedButton from '$lib/SkewedButton.svelte';
 	import Square from '$lib/Square.svelte';
 	import Sun from '$lib/Sun.svelte';
@@ -6,7 +6,7 @@
 
 	import { onMount } from 'svelte';
 
-	import { gameBackground, gameLineColor, theme, vh, vw, starterStyle } from '$lib/stores.js';
+	import { gameBackground, gameLineColor, theme, vh, vw, starterStyle, lastVisible } from '$lib/stores.js';
 
 	let squares = ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O'];
 	let bgColor = 'blue';
@@ -56,9 +56,11 @@
 
   let selected = "alternately";
 	
-	function onChange(event) {
+	function onStarterChange(event: any) {
 		  $starterStyle = event.currentTarget.value;
 	}
+
+
 </script>
 
 <svelte:head>
@@ -126,15 +128,18 @@
   <h4>Aloittaja:</h4>
   <p>    
     <label>
-      <input checked={selected==="alternately"} on:change={onChange} type="radio" name="amount" value="alternately" /> Vuorotellen
+      <input checked={selected==="alternately"} on:change={onStarterChange} type="radio" name="amount" value="alternately" /> Vuorotellen
     </label>
     <label>
-      <input checked={selected==="human"} on:change={onChange} type="radio" name="amount" value="human" /> Aina pelaaja
+      <input checked={selected==="human"} on:change={onStarterChange} type="radio" name="amount" value="human" /> Aina pelaaja
     </label>
     <label>
-      <input checked={selected==="ai"} on:change={onChange} type="radio" name="amount" value="ai" /> Aina tietokone
+      <input checked={selected==="ai"} on:change={onStarterChange} type="radio" name="amount" value="ai" /> Aina tietokone
     </label>
   </p>
+  <label>
+    <input checked={$lastVisible===true} on:change={() => $lastVisible = $lastVisible ? false : true } type="checkbox" name="lastbox" /> Näytä viimeinen siirto
+  </label>
   	
 </Modal>
 
