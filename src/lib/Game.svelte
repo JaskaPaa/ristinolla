@@ -17,7 +17,10 @@
     let line = [0, 0, 0, 0];
     let squareSize = 20;
     let animate = false;
-    let width = 39;    
+    let width = 39;
+    let showLast = false;
+    
+    $: showLast = ($game.moves.length !== 0 && $lastVisible) ? true : false
     
     let background = '#777';
 
@@ -208,7 +211,7 @@
             <Square onClick={() => markMove(i, j)}
                 text={($squares[i][j] === '-') ? '' :  $squares[i][j]}
                 anim={(i == lastMove.x && j == lastMove.y && visible) ? true : false}
-                showLast={(i == lastMove.x && j == lastMove.y && $lastVisible) ? true : false}
+                showLast={(i == lastMove.x && j == lastMove.y && showLast) ? true : false}
                 size={squareSize}
                 />            		
 		{/each}
