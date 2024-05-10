@@ -14,7 +14,7 @@
     
     $: hidden = ($winner === '') ? true : false;
     
-    $: if ($game.status === 'ready' && gameRef !== undefined) gameRef.newGame(boardSize, mark);
+    //$: if ($game.status === 'ready' && gameRef !== undefined) gameRef.newGame(boardSize, mark);
     
     $: statusInfo = ($game.movesNext === 'human') ? "Sinun vuorosi" : "Tietokoneen vuoro"
     $: if ($winner === 'X')  statusInfo = "Risti voitti"
@@ -43,7 +43,10 @@
     <button class:hidden={($game.status === 'over') ? false : true} class="button-7"
         on:click={() => gameRef.newGame(boardSize, mark)}><h2>Uusi peli</h2></button>
     <div class:hidden={($game.status === 'started' || $game.status === 'over') ? false : true}>
-        <p><button class="button-7" on:click={gameRef.moveBack}>&#x25C0;</button> &#x25B6;</p>        
+        <p>
+        <button class="action-button" on:click={gameRef.moveBack}> &#x21b6; </button>
+        <button class="action-button" on:click={gameRef.resign}> &#127987; </button>
+        </p>        
         <button class="button-7" on:click={gameRef.showLastMove}>Viime siirto</button>
     </div>
     <div class:hidden={($game.status === 'ready') ? false : true}>        
@@ -104,6 +107,15 @@
         width:  2.5rem;
         height: 2.5rem;
         border: 0;
+    }
+
+    .action-button {
+        width:  2.5rem;
+        height: 2.5rem;
+        border: 0;
+        font-size: 1.5rem;
+        background-color: var(--color-bg-1);
+        color: var(--color-fg-1);
     }
 
     .mark-selected {

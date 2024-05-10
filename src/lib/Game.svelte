@@ -64,27 +64,18 @@
         console.log("ss:", humanMark);
         
         if ($game.status !== 'over') {
-            if ($winner === humanMark)
-                $game.score.human++;
-            else 
+            if ($winner === humanMark) {
+                if ($game.takebacks === 0)
+                    $game.score.human++;
+            }
+            else { 
                 $game.score.AI++;
+            }
         }
         
         $game.status = 'over';
 
-        if ($starterStyle === "alternately")
-            $game.starter = ($game.starter === 'human') ? 'ai' : 'human';
-        else
-            $game.starter = $starterStyle; 
-
         console.log("GAME OVER");
-    }
-
-    $: {
-        console.log("style:", $starterStyle)
-        if ($starterStyle === "human" || $starterStyle === "ai") {
-            $game.starter = $starterStyle;
-        } 
     }
 
     function markMove(x: number, y: number) {       
@@ -112,7 +103,6 @@
         if (AI.checkDraw($squares)) {
             $winner = "Tasapeli";
             $game.status = 'over';            
-            $game.starter = ($game.starter === 'human') ? 'ai' : 'human';
             return;
         }
         
@@ -144,8 +134,7 @@
         
         if (AI.checkDraw($squares)) {
             $winner = "Tasapeli";
-            $game.status = 'over';
-            $game.starter = ($game.starter === 'human') ? 'ai' : 'human';            
+            $game.status = 'over';           
         }   
     }
 
@@ -158,7 +147,17 @@
         $winnerLine = [];
         $winner = '';
         $game.status = 'ready'
-        $game.moves = [];       
+        $game.moves = [];
+        $game.takebacks = 0;
+
+        console.log("$game.starter:", $game.starter);
+        if ($starterStyle === "alternately")
+            $game.starter = ($game.starter === 'human') ? 'ai' : 'human';
+        else
+            $game.starter = $starterStyle;
+        
+        console.log("$game.starter:", $game.starter);
+
         $game.movesNext = $game.starter;
 
         if ($game.movesNext === 'ai') {
@@ -171,24 +170,45 @@
     }    
     
     export function showLastMove() {
+        if ($game.moves.length === 0)
+            return;
+
         lastMove =  $game.moves.at(-1);     
         visible = true;        
         setTimeout(()=> {visible = false}, 500);       
     }
 
     export function moveBack() {
-        
-        let last =  $game.moves.pop();
-        console.log("taking a move back:", last);
-        console.log("moves:", $game.moves);
 
-        if (last) {
-            $squares[last.x][last.y] = '-';
-            $game.movesNext = ($game.movesNext === 'human') ? 'ai' : 'human';
-            lastMove = last;
+        if ($game.status === 'over')
+            return;
+        if ($game.starter === 'ai' && $game.moves.length <= 1)
+            return;
+        if ($game.moves.length === 0)
+            return;
+        
+        console.log("taking a move back:");
+        console.log("moves:", $game.moves);
+        $game.takebacks++;
+
+        for (let i =0; i < 2; i++) {
+            let last =  $game.moves.pop();
+            if (last) {
+                $squares[last.x][last.y] = '-';
+                $game.movesNext = 'human'; //($game.movesNext === 'human') ? 'ai' : 'human';
+                lastMove = last;
+            }
         }
     }
 
+    export function resign() {
+        console.log("Player resigns...");
+        if ($game.status === 'over')
+            return;
+        $winner = (humanMark === 'X') ? 'O' : 'X';        
+        $game.status = 'over';
+        $game.score.AI++;
+    }
 	
 </script>
 

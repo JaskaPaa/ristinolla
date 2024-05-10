@@ -54,9 +54,12 @@
 		<Game bind:this={gameRef} />		
 	</div>	
 	<div class="right" >		
-		<p> {$game.starter === 'human' ? 'Ihmispelaaja' : 'Tietokone'} aloittaa
-			Ihmispelaaja: {$game.humanMark} - Tietokone: {$game.humanMark === 'X' ? 'O' : 'X'}</p>
-		<p>{$game.moves.length} siirtoa</p>		
+		<p>Aloittaja: {$game.starter === 'human' ? 'Pelaaja' : 'Tietokone'} </p>
+		<p>Pelaaja: {$game.humanMark}</p>
+		<p>Tietokone: {$game.humanMark === 'X' ? 'O' : 'X'}</p>
+		<p>Siirtoja: {$game.moves.length} </p>
+		<p>Voittaja: {$winner}</p>
+		<p>Siirron peruutuksia: {$game.takebacks}</p>		
 	</div>
 			
 </main>

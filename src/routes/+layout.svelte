@@ -54,10 +54,10 @@
       });
 	});
 
-  let selected = "alternately";
+  	let selected = "alternately";
 	
 	function onStarterChange(event: any) {
-		  $starterStyle = event.currentTarget.value;
+		$starterStyle = event.currentTarget.value;
 	}
 
 
@@ -117,6 +117,8 @@
     Joissakin säännöissä voittolinjan on oltava täsmälleen viisi merkkiä pitkä, jolloin kuusi tai useampi merkki peräkkäin ei ole voitto,
     mutta tässä versiossa siis viisi tai sitä enemmän voittaa.
     <br><br>
+	HUOM. Jos pelaaja on ottanut siirtoja takaisin, niin pelaajan pistesaldo ei voittaessa kasva.
+	<br><br>
   </p>  	
 </Modal>
 

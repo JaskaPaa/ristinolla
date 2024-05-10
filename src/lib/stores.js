@@ -39,10 +39,11 @@ export const game = writable({
     movesNext: 'human',
     status: 'ready',
     winnerLine: [],
-    winner: '--',
+    winner: '-',
     moves: [{x:0, y:0}],
     starter: "human",
-    humanMark: 'X' 
+    humanMark: 'X',
+    takebacks: 0 
 });
 
 
