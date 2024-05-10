@@ -40,6 +40,7 @@ body {
 	--color-code-fg: var(--color-1);
   --color-bg-1:  rgb(163, 192, 172);
   --color-bg-2:  rgb(163, 192, 172);
+  --color-fg-1: black;
 
 	--color-blockquote-bg: #080808;
 	--color-blockquote-fg: var(--color-1);
