@@ -138,7 +138,7 @@
         }   
     }
 
-    export function newGame(size=15, m) {
+    export function newGame(size=15, m='X', changeStarter = true) {
         console.log("creating a new game-----");
         
         humanMark = m;
@@ -151,10 +151,12 @@
         $game.takebacks = 0;
 
         console.log("$game.starter:", $game.starter);
-        if ($starterStyle === "alternately")
-            $game.starter = ($game.starter === 'human') ? 'ai' : 'human';
-        else
-            $game.starter = $starterStyle;
+        if (changeStarter) {
+            if ($starterStyle === "alternately")
+                $game.starter = ($game.starter === 'human') ? 'ai' : 'human';
+            else
+                $game.starter = $starterStyle;
+        }
         
         console.log("$game.starter:", $game.starter);
 
