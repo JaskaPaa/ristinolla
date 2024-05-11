@@ -1,4 +1,5 @@
 <script lang='ts'>
+    import { tooltip } from "@svelte-plugins/tooltips";
 	import Square from './Square.svelte';
     import { fade } from 'svelte/transition';
     
@@ -14,7 +15,7 @@
     
     $: hidden = ($winner === '') ? true : false;
     
-    //$: if ($game.status === 'ready' && gameRef !== undefined) gameRef.newGame(boardSize, mark);
+    $: gameRef.newGame(boardSize, mark, false);
     
     $: statusInfo = ($game.movesNext === 'human') ? "Sinun vuorosi" : "Tietokoneen vuoro"
     $: if ($winner === 'X')  statusInfo = "Risti voitti"
@@ -25,7 +26,8 @@
         size = (boardSize + size < 10) ? 0 : size;
         size = (boardSize + size > 30) ? 0 : size;
         
-        boardSize += size;		
+        boardSize += size;
+        gameRef.newGame(boardSize, mark, false);		
 	}
 
 </script>
@@ -44,13 +46,15 @@
         on:click={() => gameRef.newGame(boardSize, mark)}><h2>Uusi peli</h2></button>
     <div class:hidden={($game.status === 'started' || $game.status === 'over') ? false : true}>
         <p>
-        <button class="action-button" on:click={gameRef.moveBack}> &#x21b6; </button>
-        <button class="action-button" on:click={gameRef.resign}> &#127987; </button>
+        <button class="action-button" use:tooltip={{ content: 'Peruuta siirto' }}
+            on:click={gameRef.moveBack}> &#x21b6; </button>
+        <button class="action-button" use:tooltip={{ content: 'Luovuta' }}
+            on:click={gameRef.resign}> &#127987; </button>
         </p>        
         <button class="button-7" on:click={gameRef.showLastMove}>Viime siirto</button>
     </div>
     <div class:hidden={($game.status === 'ready') ? false : true}>        
-        <div class="size">
+        <div class="size" use:tooltip={{ content: 'Muuta pelialueen kokoa' }}>
             <button class="button-7 theme-colors size-button"
                 on:click={() => changeBoardSize(-5) } >&#xff0d;</button>
             <div class="theme-colors size-display button-7">{boardSize}&times;{boardSize}</div>
@@ -58,13 +62,13 @@
                 on:click={() => changeBoardSize(+5) } >&#xff0b;</button>
         </div>    
         <br>        
-        <button class="mark-button" on:click={ () =>  mark = 'X' }>
+        <button class="mark-button" on:click={ () =>  mark = 'X' } use:tooltip={{ content: 'Valitse risti' }}>
             <svg class="square-colors2" class:mark-selected={(mark === 'X') ? true : false} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" >	
                 <line opacity="0.8" stroke-width="12%" x1="20%" y1="20%" x2="80%" y2="80%"></line>
                 <line opacity="0.8" stroke-width="12%" x1="80%" y1="20%" x2="20%" y2="80%"></line>			
             </svg>
         </button>
-        <button class="mark-button" on:click={ () =>  mark = 'O' }>
+        <button class="mark-button" on:click={ () =>  mark = 'O' } use:tooltip={{ content: 'Valitse nolla' }}>
             <svg class="square-colors2" class:mark-selected={(mark === 'O') ? true : false} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" >
                 <circle fill="none" opacity="0.8" stroke-width="12%" cx="50%" cy="50%" r="30%">
                 </circle>				
