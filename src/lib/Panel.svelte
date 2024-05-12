@@ -5,6 +5,8 @@
     
     import { winnerLine, winner, board, game, vw, vh } from './stores.js';
 	import type Game from './Game.svelte';
+    import Sun from '$lib/Sun.svelte';
+    import BackArrow from './BackArrow.svelte';
     
     export let gameRef: Game;
     
@@ -15,7 +17,7 @@
     
     $: hidden = ($winner === '') ? true : false;
     
-    $: gameRef.newGame(boardSize, mark, false);
+    $: if (gameRef) gameRef.newGame(boardSize, mark, false);
     
     $: statusInfo = ($game.movesNext === 'human') ? "Sinun vuorosi" : "Tietokoneen vuoro"
     $: if ($winner === 'X')  statusInfo = "Risti voitti"
@@ -46,10 +48,10 @@
         on:click={() => gameRef.newGame(boardSize, mark)}><h2>Uusi peli</h2></button>
     <div class:hidden={($game.status === 'started' || $game.status === 'over') ? false : true}>
         <p>
-        <button class="action-button" use:tooltip={{ content: 'Peruuta siirto' }}
-            on:click={gameRef.moveBack}> &#x21b6; </button>
-        <button class="action-button" use:tooltip={{ content: 'Luovuta' }}
-            on:click={gameRef.resign}> &#127987; </button>
+        <button class="action-button button-7" use:tooltip={{ content: 'Peruuta siirto' }}
+            on:click={gameRef.moveBack}> &#8630; </button>
+        <button class="action-button button-7" use:tooltip={{ content: 'Luovuta' }}
+            on:click={gameRef.resign}> &#9873; </button>
         </p>        
         <button class="button-7" on:click={gameRef.showLastMove}>Viime siirto</button>
     </div>
@@ -116,10 +118,10 @@
     .action-button {
         width:  2.5rem;
         height: 2.5rem;
-        border: 0;
-        font-size: 1.5rem;
+        font-size: 2.0rem;
+        /*border: 0;        
         background-color: var(--color-bg-1);
-        color: var(--color-fg-1);
+        color: var(--color-fg-1);*/
     }
 
     .mark-selected {

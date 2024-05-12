@@ -79,13 +79,8 @@ body {
   white-space: nowrap;
 }
 
-.button-7:hover,
-.button-7:focus {
+.button-7:hover {
   background-color: rgb(55, 55, 55, .4);
-}
-
-.button-7:focus {
-  box-shadow: 0 0 0 .1rem rgba(17, 17, 17, 0.15);
 }
 
 .button-7:active {
