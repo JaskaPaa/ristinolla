@@ -4,9 +4,7 @@
     import { fade } from 'svelte/transition';
     
     import { winnerLine, winner, board, game, vw, vh } from './stores.js';
-	import type Game from './Game.svelte';
-    import Sun from '$lib/Sun.svelte';
-    import BackArrow from './BackArrow.svelte';
+	import type Game from './Game.svelte';   
     
     export let gameRef: Game;
     
