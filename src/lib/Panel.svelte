@@ -44,7 +44,7 @@
     </div>
     <button class:hidden={($game.status === 'over') ? false : true} class="button-7"
         on:click={() => gameRef.newGame(boardSize, mark)}><h2>Uusi peli</h2></button>
-    <div class:hidden={($game.status === 'started' || $game.status === 'over') ? false : true}>
+    <div class:hidden={($game.status === 'started') ? false : true}>
         <p>
         <button class="action-button button-7" use:tooltip={{ content: 'Peruuta siirto' }}
             on:click={gameRef.moveBack}> &#8630; </button>
@@ -76,7 +76,7 @@
         </button>
     </div>
     
-    <div class="status">
+    <div class="bar">
         <br>
     </div>    
 </div>
@@ -139,6 +139,13 @@
         width: 100%;
         background-color: var(--color-bg-1);
         font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .bar {
+        width: 100%;
+        background-color: var(--color-bg-1);
+        font-size: 1.0rem;
     }
 
     .hidden {

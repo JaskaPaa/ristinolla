@@ -53,13 +53,14 @@
 	<div class="middle">		
 		<Game bind:this={gameRef} />		
 	</div>	
-	<div class="right" >		
+	<div class="right theme-colors" >
+		<h3>Pelitapahtumat</h3>		
 		<p>Aloittaja: {$game.starter === 'human' ? 'Pelaaja' : 'Tietokone'} </p>
-		<p>Pelaaja: {$game.humanMark}</p>
-		<p>Tietokone: {$game.humanMark === 'X' ? 'O' : 'X'}</p>
+		<p>Pelaaja: {$game.humanMark} Tietokone: {$game.humanMark === 'X' ? 'O' : 'X'}</p>
 		<p>Siirtoja: {$game.moves.length} </p>
 		<p>Voittaja: {$winner}</p>
-		<p>Siirron peruutuksia: {$game.takebacks}</p>		
+		<p>Siirron peruutuksia: {$game.takebacks}</p>
+		<h4><br></h4>		
 	</div>
 			
 </main>
@@ -89,6 +90,17 @@
 		flex-direction: row;
 	}
 
+	h3 {
+		width: 100%;
+        background-color: var(--color-bg-1);
+        font-size: 1.5rem;
+	}
+	h4 {
+		width: 100%;
+        background-color: var(--color-bg-1);
+        font-size: 1.0rem;
+	}
+
 	.left {
 		width: 20%; 
 		box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
@@ -100,10 +112,12 @@
 		justify-content: center;
 	}
 	.right {
-		padding: 20px;
+		/*padding: 20px;*/
 		width: 20%;
 		box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
 		margin: 0 1em;
+		height: min-content;
+		font-size: 1.2rem;
 	}
 
     @keyframes pulse {
