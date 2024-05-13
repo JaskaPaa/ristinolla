@@ -126,24 +126,29 @@
 	<h2 slot="header">
 		Asetukset	
 	</h2>
-  <h4>Aloittaja:</h4>
-  <p>    
-    <label>
-      <input checked={selected==="alternately"} on:change={onStarterChange} type="radio" name="amount" value="alternately" /> Vuorotellen
-    </label>
-    <label>
-      <input checked={selected==="human"} on:change={onStarterChange} type="radio" name="amount" value="human" /> Aina pelaaja
-    </label>
-    <label>
-      <input checked={selected==="ai"} on:change={onStarterChange} type="radio" name="amount" value="ai" /> Aina tietokone
-    </label>
-  </p>
-  <br>
-  <p> 
-  <label>
-    <input checked={$lastVisible===true} on:change={() => $lastVisible = $lastVisible ? false : true } type="checkbox" name="lastbox" /> Näytä viimeinen siirto
-  </label>
-  <p>  	
+	<br>
+  	<h3>Aloittaja:</h3>
+  	<p>    
+		<label>
+		<input checked={selected==="alternately"} on:change={onStarterChange}
+			type="radio" name="amount" value="alternately" /> Vuorotellen
+		</label>
+		<label>
+		<input checked={selected==="human"} on:change={onStarterChange}
+			type="radio" name="amount" value="human" /> Aina pelaaja
+		</label>
+		<label>
+		<input checked={selected==="ai"} on:change={onStarterChange}
+			type="radio" name="amount" value="ai" /> Aina tietokone
+		</label>
+  	</p>
+	<br>
+	<p> 
+		<label>
+			<input checked={$lastVisible===true} on:change={() => $lastVisible = $lastVisible ? false : true }
+				type="checkbox" name="lastbox" /> Näytä viimeinen siirto
+		</label>
+	<p>  	
 </Modal>
 
 <slot />
@@ -164,12 +169,17 @@
 		font-size: 200%;
 		box-sizing: border-box;
 	}
-  p {
-    font-size: 120%;
-  }
+	p {
+		font-size: 1.3rem;
+	}
 	a {
 		text-decoration: none;
 		background-color: transparent;
+	}
+
+	[type="radio"], [type="checkbox"]{
+  		width: 1.3rem;
+  		height: 1.3rem;
 	}
 	.burger {
 		display: none;
