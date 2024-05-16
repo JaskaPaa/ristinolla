@@ -2,9 +2,11 @@
     import { tooltip } from "@svelte-plugins/tooltips";
 	import Square from './Square.svelte';
     import { fade } from 'svelte/transition';
+    import Backarrow from "./Backarrow.svelte";
+    import Flag from "./Flag.svelte"; 
     
     import { winnerLine, winner, board, game, vw, vh } from './stores.js';
-	import type Game from './Game.svelte';   
+	import type Game from './Game.svelte';	
     
     export let gameRef: Game;
     
@@ -21,7 +23,7 @@
     $: if ($winner === 'X')  statusInfo = "Risti voitti"
     $: if ($winner === 'O')  statusInfo = "Nolla voitti"
     $: if ($winner == 'Tasapeli')  statusInfo = "Tasapeli"
-
+    // &#8630;  &#9873;
     function changeBoardSize(size: number) {
         size = (boardSize + size < 10) ? 0 : size;
         size = (boardSize + size > 30) ? 0 : size;
@@ -45,11 +47,12 @@
     <button class:hidden={($game.status === 'over') ? false : true} class="button-7"
         on:click={() => gameRef.newGame(boardSize, mark)}><h2>Uusi peli</h2></button>
     <div class:hidden={($game.status === 'started') ? false : true}>
-        <p>
+        <p><span>
         <button class="action-button button-7" use:tooltip={{ content: 'Peruuta siirto' }}
-            on:click={gameRef.moveBack}> &#8630; </button>
+            on:click={gameRef.moveBack}> <Backarrow /> </button>
         <button class="action-button button-7" use:tooltip={{ content: 'Luovuta' }}
-            on:click={gameRef.resign}> &#9873; </button>
+            on:click={gameRef.resign}> <Flag /> </button>
+        </span>
         </p>        
         <button class="button-7" on:click={gameRef.showLastMove}>Viime siirto</button>
     </div>
