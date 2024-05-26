@@ -5,52 +5,57 @@
         <br>
         <p>   
         Vanhassa kunnon Emacs-editorissa on yhtenä pelinä gomoku, joka on melkein sama peli kuin ristinolla.
-        Kyseinen Emacsin gomoku pelaa nopeasti ja samalla kumman hyvin, joten pakkohan oli vilkaista sen Lispillä tehtyä lähdekoodia.
+        Kyseinen Emacsin gomoku pelaa nopeasti ja samalla kumman hyvin, joten pakkohan sitä oli vilkaista sen Lispillä tehtyä lähdekoodia.
         Lähdekoodissa yllättäen ja pyytämättä selitetään pelialgoritmin
         toimintaa melkoisen kattavasti. Linkki kyseiseen tiedostoon: 
         <a href="https://github.com/typester/emacs/blob/master/lisp/play/gomoku.el">gomoku.el</a>
-        </p>
-        <br>            
+        </p>            
         <p> 
-        Tuon idean mukaan myös tämän sivuston ristinollaa pelaava tekoäly on tehty.
+        Tuon idean mukaan myös tämän sivuston ristinollaa pelaava tekoäly on tehty.          
         Toki oli hauskempi olla lukematta kyseistä lispkoodia ja tehdä kokonaan oma versio samalla idealla.
+        On huomattava, että koodi ei perustu esimerkiksi shakissa käytettyyn minimax-algoritmiin, ja oikeastaan sen takia se on niin nopea.
         Tässä lyhyt selostus kyseisen algoritmin toiminnasta:
         <br><br>
-        Algoritmi käy läpi jokaisen ruudun kertaalleen ja laskee jokaiselle ruudulle lukuarvon.
+        Algoritmi käy läpi jokaisen ruudun kertaalleen, sijoittaa kyseiseen ruutuun X- ja O-merkin
+        ja laskee ruudulle arvon kun kyseinen merkki on ruudussa.
         Lukuarvo on summa pysty-, vaaka- ja vinolinjojen pelimerkeistä paremmuuden mukaan.
         Se etsii '--XX--', '--XXX--', '-X-XX-', '--XXXO' tapaisia merkkijonoja, joissa '-' on tyhjä ruutu.
-        Ja sama homma myös 'O'-merkille.
-
-        Lukuarvot ovat siten valittu, että saadaan haluttu "älykkyys". Esimerkiksi tilanteessa:
+        Ja sama homma siis myös 'O'-merkille. Joka jälkeen ruutu merkitään tyhjäksi, ja siirrytään seuraavaan ruutuun.
+        <br><br>
+        Kun kaikki ruudut on käyty läpi, algoritmi pelaa merkkinsä suurimman arvon ruutuun.
+        <br><br>     
+        Lukuarvot ovat siten valittuja, että saadaan haluttu "älykkyys". Esimerkiksi tilanteessa:
         </p> 
-        <br>
         <pre>    
-        <code>       
-        			  . . . . . . . O .
-        			  . X X a . . . X .
-        			  . . . X . . . X .
-        			  . . . X . . . X .
-        			  . . . . . . . b .
-        
+        <code>        
+                        . . . . . . . . . 
+                        . . . . . . . X .
+                        . X X A . . . O .
+                        . . . X . . . O .
+                        . . . X . . . O .
+                        . . . . . . . B .
+                        . . . . . . . . .        
         </code>
         </pre>
         <p> 
-        Algoritmi laskee ruudun a summaan pysty- ja vaakalinjat, ja tämän summan on oltava suurempi kuin b-ruudun summa.
-        Yllä olevassa siis a:ssa on kahden 'XXX'-merkkijonon lukuarvoa vastaava summa eli vaikkapa 1000+1000,
-        jolloin b:n eli '--XXXO'-jonon arvon on oltava pienenpi kuin 2000, vaikkapa 1200.
+        Algoritmi laskee ruudun A summaan pysty- ja vaakalinjat, ja tämän summan on oltava suurempi kuin B-ruudun summa.
+        Yllä olevassa siis ruutuun A algoritmi sijoittaa X-merkin, jolloin on kahden näin syntyvän 'XXX'-merkkijonon
+        lukuarvoa vastaa summa 1000+1000. Tällöin ruutu B:hen sijoitettu O-merkki eli linjan '-OOOOX' arvon on oltava pienempi kuin 2000.
         </p>         
-        <br><br>
-
+        <br>
+        Mutta tilanteessa:
         <pre>                
-            <code>       
-                          . . . . . . . a .
-                          . X X a . . . X .
-                          . . . X . O O X .
-                          . . . X . . . X .
-                          . . . . . . . b .
-            
+            <code>        
+                        . . . . . . . . .  
+                        . . . . . . . B .
+                        . X X A . . . O .
+                        . . . X . . . O .
+                        . . . X . . . O .
+                        . . . . . . . C .
+                        . . . . . . . . .            
             </code>
-            </pre>
+        </pre>
+        Merkkijonon '-OOOO-' arvon on oltava suurempi kuin A-ruudun, jotta algoritmi pelaa B- tai C-ruutuun. 
         <br><br>
         <br><br>
          
