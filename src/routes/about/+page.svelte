@@ -8,7 +8,8 @@
         Kyseinen Emacsin gomoku pelasi nopeasti ja samalla kumman hyvin, joten pakkohan silloin oli vilkaista sen Lispillä tehtyä lähdekoodia.
         Lähdekoodissa yllättäen ja pyytämättä selitetään pelialgoritmin toimintaa melkoisen kattavasti. Linkki kyseiseen tiedostoon: 
         <a href="https://github.com/typester/emacs/blob/master/lisp/play/gomoku.el">gomoku.el</a>
-        </p>            
+        </p>
+        <br>           
         <p> 
         Saman idean mukaan myös tämän sivuston ristinollaa pelaava tekoäly on tehty.          
         Tietysti oli hauskempi olla lukematta kyseistä koodia ja tehdä kokonaan oma versio samalla idealla.
