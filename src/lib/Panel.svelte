@@ -141,7 +141,7 @@
     .status {
         width: 100%;
         background-color: var(--color-bg-1);
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight: bold;
     }
 
