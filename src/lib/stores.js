@@ -10,12 +10,10 @@ console.log('In store...');
 let stored = null;
 
 if (browser) {
-    //vw = window.visualViewport.width;
-    //vh = window.visualViewport.height;
     stored = localStorage.getItem('theme');
 }
 
-export const theme = writable(stored || 'light');
+export const theme = writable(stored || 'dark');
 
 if (browser) {
     theme.subscribe( (value) => localStorage.theme = value )
