@@ -7,3 +7,4 @@ SkewedButton.svelte
 Square.svelte
 Panel.svelte
 Modal.svelte
+Burger.svelte

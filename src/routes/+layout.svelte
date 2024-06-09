@@ -2,7 +2,8 @@
 	import SkewedButton from '$lib/SkewedButton.svelte';
 	import Square from '$lib/Square.svelte';
 	import Sun from '$lib/Sun.svelte';
-  import Modal from '$lib/Modal.svelte';
+  	import Modal from '$lib/Modal.svelte';
+	import Burger from '$lib/Burger.svelte';
 
 	import { onMount } from 'svelte';
 
@@ -31,8 +32,8 @@
 	let showMenu = false;
 	let skew = 20;
 	let burger = '&#9776;';
-  let showRules = false;
-  let showSettings = false;
+  	let showRules = false;
+  	let showSettings = false;
 
 	$: if ($vw < $vh) {
       // portrait orientation
@@ -42,7 +43,7 @@
 	}
 
 	function show() {
-      showMenu = showMenu === true ? false : true;
+      showMenu = !showMenu;
       skew = 0;
   }
 
@@ -86,10 +87,11 @@
           {/each}
         </span>
         <span class="burger">
-          <SkewedButton on:click={show} {skew} float="right">{@html showMenu ? '&#x2715;' : '&#9776;'}</SkewedButton>
+          <!--SkewedButton on:click={show} skew={skew} float="right">{@html showMenu ? '&#x2715;' : '&#9776;'}</SkewedButton-->
+		  <SkewedButton on:click={show} skew={skew} float="right"><Burger toggle={showMenu} /></SkewedButton>
         </span>
         <span class:show={showMenu} class="menu">
-          <SkewedButton on:click={switchTheme} skew={-skew} float="right"><Sun /></SkewedButton>
+          <SkewedButton on:click={switchTheme} skew={-skew} float="right"><Sun /></SkewedButton>	  
           <SkewedButton on:click={() => {showMenu = false; showSettings = true } } skew={-skew} float="right">
             <span>Asetukset</span>
           </SkewedButton>
