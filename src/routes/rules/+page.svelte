@@ -1,176 +1,52 @@
+<script lang='ts'>
+    import Burger from '$lib/Burger.svelte';
+    let showMenu = true;
+    let spin = true;
+
+    function doSome() {
+        spin = !spin;
+        showMenu = !showMenu;
+    }
+</script>
+
+
 <main>
-<div>
+<p class:show={showMenu}>Testi tekstiä</p>
+<button on:click={doSome}><Burger toggle={spin} /></button>
+<div class:show={showMenu} class:hide={!showMenu}>
     <br>
     <h1>Säännöt</h1>
     <br>   
     <p>
     Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
     Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p>
-    <br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p><br>   
-    <p>
-    Pelaajat vuorottelevat asettamalla merkkinsä tyhjään ruutuun.
-    Musta pelaa ensin. Voittaja on ensimmäinen pelaaja, joka muodostaa katkeamattoman viivan viidestä omasta merkistä vaakasuunnassa, pystysuunnassa tai vinottain.
-    <br><br>
-    Joissakin säännöissä tämän rivin on oltava täsmälleen viisi kiveä pitkä;
-    kuusi tai useampia kiveä peräkkäin ei lasketa voittoksi ja sitä kutsutaan yliviivaksi. Tässä versiossa mikä vain käy.
-    <br><br>
-    Jos lauta on täysin täynnä eikä kukaan pysty muodostamaan 5 kiven riviä, peli päättyy tasapeliin.
-    </p>
+    
 </div>
 
 </main>
 
 <style>
+
+    .show {
+    	/*background-color: var(--color-code-bg);
+		display: grid;
+		position: absolute;
+		z-index: 1000;
+		float: right;
+		right: 0;
+		top: 2.5rem;*/
+		/*animation: fadeIn 0.5s;*/
+		/*transition: opacity 1s;  
+		opacity: 0.5;*/
+		
+		transition: all 0.5s ease-out;
+		opacity: 1;
+	}
+    .hide {
+        transition: all 0.5s ease-out;
+        opacity: 0;
+    }
+	
 
 h1 {
     text-align: center;
