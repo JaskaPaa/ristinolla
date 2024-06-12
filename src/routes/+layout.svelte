@@ -42,10 +42,10 @@
       skew = 20;
 	}
 
-	function show() {
-      showMenu = !showMenu;
-      skew = 0;
-  }
+	function show() {		
+		showMenu = !showMenu;		
+		skew = 0;
+  	}
 
 	onMount(() => {
       theme.subscribe((v) => {
@@ -90,7 +90,7 @@
           <!--SkewedButton on:click={show} skew={skew} float="right">{@html showMenu ? '&#x2715;' : '&#9776;'}</SkewedButton-->
 		  <SkewedButton on:click={show} skew={skew} float="right"><Burger toggle={showMenu} /></SkewedButton>
         </span>
-        <span class:show={showMenu} class="menu">
+        <span class:show={showMenu} class:hide={!showMenu} class="menu">
           <SkewedButton on:click={switchTheme} skew={-skew} float="right"><Sun /></SkewedButton>	  
           <SkewedButton on:click={() => {showMenu = false; showSettings = true } } skew={-skew} float="right">
             <span>Asetukset</span>
@@ -171,9 +171,11 @@
 		font-size: 200%;
 		box-sizing: border-box;
 	}
+
 	p {
 		font-size: 1.3rem;
 	}
+
 	a {
 		text-decoration: none;
 		background-color: transparent;
@@ -183,6 +185,7 @@
   		width: 1.3rem;
   		height: 1.3rem;
 	}
+
 	.burger {
 		display: none;
 		width: 6rem;
@@ -192,13 +195,28 @@
 	}
 
 	.show {
-    background-color: var(--color-code-bg);
+    	background-color: var(--color-code-bg);
 		display: grid;
 		position: absolute;
 		z-index: 1000;
 		float: right;
 		right: 0;
 		top: 2.5rem;
+		animation: fadeIn 0.5s;		
+	}
+
+	.hide {		  	
+		animation: fadeOut 0.5s;		
+	}
+
+	@keyframes fadeIn {
+		0% { opacity: 0; scale: 100%; }
+		100% { opacity: 1; scale: 100%;}
+	}
+	
+	@keyframes fadeOut {
+		0% { opacity: 1; }
+		100% { opacity: 0; }
 	}
 
 	@media screen and (max-width: 100rem) {
@@ -216,6 +234,7 @@
 			position: relative;
 			right: 0;
 			top: 0;
+			opacity: 1;
 		}
 	}
 
