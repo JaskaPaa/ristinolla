@@ -99,7 +99,7 @@
             <a class="theme-colors" href="/about">Tietoja</a>
           </SkewedButton>
           <SkewedButton on:click={() => {showMenu = false; showRules = true } }  skew={-skew} float="right">
-            <span>Sääntöjä</span>
+            <span>Säännöt</span>
           </SkewedButton>
         </span>
     </nav>
